@@ -32,6 +32,9 @@
     "systemjs": "0.19.4",
     "zone.js": "0.5.15"
   },
+  "optionalDependencies": {
+    "bootstrap": "^4.0.0-alpha.2"
+  },
   "devDependencies": {
     "angular-cli": "^0.0.24",
     "angular-cli-github-pages": "^0.2.0",
