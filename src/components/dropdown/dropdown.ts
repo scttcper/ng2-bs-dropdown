@@ -2,19 +2,23 @@ import {
     Directive,
     OnInit, OnDestroy, Input, Output, HostBinding,
     EventEmitter, ElementRef, ContentChildren,
-    Query, QueryList
+    Query, QueryList, Host
 } from 'angular2/core';
 
 @Directive({
     selector: '[.dropdown]',
     host: {
+        '[class.open]': 'isOpen'
     }
 })
 export class Dropdown implements OnInit, OnDestroy {
-    isOpen: Boolean = false
+    isOpen: Boolean;
+    toggle: EventEmitter<any> = new EventEmitter();
     constructor() {
-        console.log('Dropdown');
         console.log(this.isOpen)
+        this.toggle.subscribe(() => {
+            this.isOpen = !this.isOpen;
+        });
     }
     ngOnInit() {
 
@@ -27,16 +31,13 @@ export class Dropdown implements OnInit, OnDestroy {
 @Directive({
     selector: '[.dropdown-toggle]',
     host: {
-        '(mousedown)': 'setMousedown()',
+        '(mousedown)': 'setMousedown()'
     }
 })
 export class DropdownToggle implements OnInit, OnDestroy {
-    @Output() toggle: EventEmitter<any> = new EventEmitter();
-    constructor() {
-        console.log('DropdownToggle');
-    }
+    constructor(@Host() private dropdown: Dropdown) {}
     setMousedown() {
-        console.log('clickDropdownToggle')
+        this.dropdown.toggle.emit(null);
     }
     ngOnInit() {
 
@@ -46,20 +47,25 @@ export class DropdownToggle implements OnInit, OnDestroy {
     }
 }
 
-@Directive({
-    selector: '[.dropdown-menu]'
-})
-export class DropdownMenu implements OnInit, OnDestroy {
-    constructor() {
-        console.log('DropdownMenu');
-    }
-    ngOnInit() {
+// @Directive({
+//     selector: '[.dropdown-menu]',
+//     host: {
+//         '[class.open]': 'isOpen'
+//     }
+// })
+// export class DropdownMenu implements OnInit, OnDestroy {
+//     isOpen: Boolean;
+//     constructor(@Host() private dropdown: Dropdown) {
+//         console.log('DropdownMenu');
+//         this.dropdown.toggle.subscribe(() => { this.isOpen = !this.isOpen; });
+//     }
+//     ngOnInit() {
 
-    }
-    ngOnDestroy() {
+//     }
+//     ngOnDestroy() {
 
-    }
-}
+//     }
+// }
 
 
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
+export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle];
