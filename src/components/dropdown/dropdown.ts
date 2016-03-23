@@ -1,71 +1,84 @@
 import {
-    Directive,
-    OnInit, OnDestroy, Input, Output, HostBinding,
-    EventEmitter, ElementRef, ContentChildren,
-    Query, QueryList, Host
+  Directive,
+  OnInit,
+  OnDestroy,
+  Input,
+  Output,
+  HostBinding,
+  EventEmitter,
+  ElementRef,
+  ContentChildren,
+  Query,
+  QueryList,
+  Host,
+  Attribute,
+  HostListener
 } from 'angular2/core';
 
+
 @Directive({
-    selector: '[.dropdown]',
-    host: {
-        '[class.open]': 'isOpen'
-    }
+  selector: '.dropdown',
+  host: {
+    '(document:click)': 'haltDisabledEvents()'
+  }
 })
-export class Dropdown implements OnInit, OnDestroy {
-    isOpen: Boolean;
-    toggle: EventEmitter<any> = new EventEmitter();
-    constructor() {
-        console.log(this.isOpen)
-        this.toggle.subscribe(() => {
-            this.isOpen = !this.isOpen;
-        });
-    }
-    ngOnInit() {
+export class Dropdown {
+  @HostBinding('class.open') public isOpen: boolean;
+  toggle: EventEmitter<any> = new EventEmitter();
 
-    }
-    ngOnDestroy() {
+  constructor() {
+    console.log(this.isOpen);
+    this.toggle.subscribe(() => {
+      this.isOpen = !this.isOpen;
+    });
+  }
 
+  // dosomething($event:any){console.log($event.target)}
+  haltDisabledEvents(event: Event) {
+    if (this.isOpen) {
+      this.toggle.emit(null);
     }
+  }
 }
 
 @Directive({
-    selector: '[.dropdown-toggle]',
-    host: {
-        '(mousedown)': 'setMousedown()'
-    }
+  selector: '.dropdown-toggle',
+  host: {
+    '(click)': 'setMousedown($event)'
+  }
 })
-export class DropdownToggle implements OnInit, OnDestroy {
-    constructor(@Host() private dropdown: Dropdown) {}
-    setMousedown() {
-        this.dropdown.toggle.emit(null);
-    }
-    ngOnInit() {
+export class DropdownToggle {
+  disabled: boolean = null;
+  classes: string;
 
-    }
-    ngOnDestroy() {
+  constructor( @Host() private dropdown: Dropdown ) {}
 
-    }
+  setMousedown(e:Event) {
+    e.stopPropagation();
+    console.log('DropdownToggleclick')
+    if (this.disabled) return;
+    this.dropdown.toggle.emit(null);
+  }
+
+  @HostBinding('attr.aria-expanded')
+  /** Gets the aria-expanded value for the component, which must be a string for Dart. */
+  get isAriaExpanded(): string {
+    return this.dropdown.isOpen ? 'true' : 'false';
+  }
 }
 
-// @Directive({
-//     selector: '[.dropdown-menu]',
-//     host: {
-//         '[class.open]': 'isOpen'
-//     }
-// })
-// export class DropdownMenu implements OnInit, OnDestroy {
-//     isOpen: Boolean;
-//     constructor(@Host() private dropdown: Dropdown) {
-//         console.log('DropdownMenu');
-//         this.dropdown.toggle.subscribe(() => { this.isOpen = !this.isOpen; });
-//     }
-//     ngOnInit() {
-
-//     }
-//     ngOnDestroy() {
-
-//     }
-// }
+@Directive({
+    selector: '.dropdown-menu',
+    host: {
+      '(click)': 'setMousedown($event)'
+    }
+})
+export class DropdownMenu {
+  setMousedown(e: Event) {
+    e.stopPropagation();
+    console.log('DropdownMenuclick')
+  }
+}
 
 
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle];
+export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
