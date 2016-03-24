@@ -19,15 +19,16 @@ import {
 @Directive({
   selector: '.dropdown',
   host: {
-    '(document:click)': 'haltDisabledEvents()'
+    '(document:click)': 'haltDisabledEvents()',
+    '[class.open]': 'isOpen'
   }
 })
 export class Dropdown {
-  @HostBinding('class.open') public isOpen: boolean;
   toggle: EventEmitter<any> = new EventEmitter();
+  public isOpen: boolean = false;
 
-  constructor() {
-    console.log(this.isOpen);
+  constructor( @Attribute('class') public cl: string ) {
+    this.isOpen = cl.includes('open');
     this.toggle.subscribe(() => {
       this.isOpen = !this.isOpen;
     });
@@ -51,9 +52,9 @@ export class DropdownToggle {
   disabled: boolean = null;
   classes: string;
 
-  constructor( @Host() private dropdown: Dropdown ) {}
+  constructor( @Host() private dropdown: Dropdown) { }
 
-  setMousedown(e:Event) {
+  setMousedown(e: Event) {
     e.stopPropagation();
     console.log('DropdownToggleclick')
     if (this.disabled) return;
@@ -68,10 +69,10 @@ export class DropdownToggle {
 }
 
 @Directive({
-    selector: '.dropdown-menu',
-    host: {
-      '(click)': 'setMousedown($event)'
-    }
+  selector: '.dropdown-menu',
+  host: {
+    '(click)': 'setMousedown($event)'
+  }
 })
 export class DropdownMenu {
   setMousedown(e: Event) {
