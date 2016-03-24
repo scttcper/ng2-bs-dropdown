@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Dir} from '../core/rtl/dir';
 import {DROPDOWN_DIRECTIVES} from '../components/dropdown/dropdown';
 
 @Component({
@@ -15,7 +14,7 @@ export class Home {}
   providers: [],
   templateUrl: 'demo-app/demo-app.html',
   styleUrls: ['demo-app/demo-app.css'],
-  directives: [ROUTER_DIRECTIVES, Dir],
+  directives: [ROUTER_DIRECTIVES],
   encapsulation: ViewEncapsulation.None,
   pipes: []
 })
