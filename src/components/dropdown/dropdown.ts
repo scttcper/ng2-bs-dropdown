@@ -9,6 +9,14 @@ import {
 
 export var openDropdowns: Array<EventEmitter<any>> = [];
 
+function closeOthers() {
+  let l = openDropdowns.length;
+  while (l--) {
+    let n = openDropdowns.pop();
+    n.emit(null);
+  }
+}
+
 @Directive({
   selector: '.dropdown',
   host: {
@@ -20,29 +28,24 @@ export class Dropdown {
   public toggle: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
-  constructor( @Attribute('class') cl: string) {
-    this.isOpen = cl.includes('open');
-    if (this.isOpen) {
-      openDropdowns.push(this.toggle);
-    }
+  constructor( @Attribute('class') cl: string ) {
+
     this.toggle.subscribe(() => {
-      // if not open check for other open dropdowns and close them
-      if (!this.isOpen) {
-        openDropdowns.forEach((n) => {
-          n.emit(null);
-        });
-        openDropdowns.splice(0, openDropdowns.length);
+      this.isOpen = !this.isOpen;
+      if (this.isOpen) {
+        closeOthers();
         openDropdowns.push(this.toggle);
       }
-      this.isOpen = !this.isOpen;
     });
+
+    let open = cl.includes('open');
+    if (open) { 
+      this.toggle.emit(null)
+    };
   }
 
   haltDisabledEvents(event: Event) {
-    if (this.isOpen) {
-      this.toggle.emit(null);
-      openDropdowns.splice(0, openDropdowns.length);
-    }
+    closeOthers();
   }
 }
 
@@ -57,12 +60,20 @@ export class DropdownToggle {
   disabled: boolean = null;
   classes: string;
 
-  constructor( @Host() private dropdown: Dropdown ) { }
+  constructor( @Host() private dropdown: Dropdown,
+    @Attribute('class') cl: string ) {
+    this.disabled = cl.includes('disabled');
+  }
 
   setMousedown(e: Event) {
     e.stopPropagation();
+    // ignore disabled clicks
     if (this.disabled) { return; };
-    this.dropdown.toggle.emit(null);
+    if (this.dropdown.isOpen) {
+      closeOthers();
+    } else {
+      this.dropdown.toggle.emit(null);
+    }
   }
 
   @HostBinding('attr.aria-expanded')
