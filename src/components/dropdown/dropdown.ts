@@ -7,7 +7,7 @@ import {
 } from 'angular2/core';
 
 
-export var OpenDropdowns: Array<EventEmitter<any>> = [];
+export var openDropdowns: Array<EventEmitter<any>> = [];
 
 @Directive({
   selector: '.dropdown',
@@ -23,16 +23,16 @@ export class Dropdown {
   constructor( @Attribute('class') cl: string) {
     this.isOpen = cl.includes('open');
     if (this.isOpen) {
-      OpenDropdowns.push(this.toggle);
+      openDropdowns.push(this.toggle);
     }
     this.toggle.subscribe(() => {
       // if not open check for other open dropdowns and close them
       if (!this.isOpen) {
-        OpenDropdowns.forEach((n) => {
+        openDropdowns.forEach((n) => {
           n.emit(null);
         });
-        OpenDropdowns.splice(0, OpenDropdowns.length);
-        OpenDropdowns.push(this.toggle);
+        openDropdowns.splice(0, openDropdowns.length);
+        openDropdowns.push(this.toggle);
       }
       this.isOpen = !this.isOpen;
     });
@@ -41,7 +41,7 @@ export class Dropdown {
   haltDisabledEvents(event: Event) {
     if (this.isOpen) {
       this.toggle.emit(null);
-      OpenDropdowns.splice(0, OpenDropdowns.length);
+      openDropdowns.splice(0, openDropdowns.length);
     }
   }
 }
@@ -61,7 +61,7 @@ export class DropdownToggle {
 
   setMousedown(e: Event) {
     e.stopPropagation();
-    if (this.disabled) return;
+    if (this.disabled) { return; };
     this.dropdown.toggle.emit(null);
   }
 
