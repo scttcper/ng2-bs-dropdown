@@ -9,7 +9,7 @@ import {
 
 export var openDropdowns: Array<EventEmitter<any>> = [];
 
-function closeOthers() {
+function closeOpen() {
   let l = openDropdowns.length;
   while (l--) {
     let n = openDropdowns.pop();
@@ -33,7 +33,7 @@ export class Dropdown {
     this.toggle.subscribe(() => {
       this.isOpen = !this.isOpen;
       if (this.isOpen) {
-        closeOthers();
+        closeOpen();
         openDropdowns.push(this.toggle);
       }
     });
@@ -45,7 +45,7 @@ export class Dropdown {
   }
 
   haltDisabledEvents(event: Event) {
-    closeOthers();
+    closeOpen();
   }
 }
 
@@ -70,7 +70,7 @@ export class DropdownToggle {
     // ignore disabled clicks
     if (this.disabled) { return; };
     if (this.dropdown.isOpen) {
-      closeOthers();
+      closeOpen();
     } else {
       this.dropdown.toggle.emit(null);
     }
