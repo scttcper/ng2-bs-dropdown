@@ -30,7 +30,7 @@ find ./deploy -type f \( -name "*.js" -o -name "*.ts" \) -exec sed -i.bak 's|\.\
 find ./deploy -type f -name "*.bak" | xargs rm
 
 # Copy the core/ directory directly into ./deploy
-cp -R ./dist/core/ ./deploy/core/
+# cp -R ./dist/core/ ./deploy/core/
 
 # To test the packages, use `npm link` in the package directories.
 # See https://docs.npmjs.com/cli/link
