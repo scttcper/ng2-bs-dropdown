@@ -1,20 +1,13 @@
 import {
   Directive,
-  OnInit,
-  OnDestroy,
-  Input,
-  Output,
   HostBinding,
   EventEmitter,
-  ElementRef,
-  ContentChildren,
-  Query,
-  QueryList,
   Host,
-  Attribute,
-  HostListener
+  Attribute
 } from 'angular2/core';
 
+
+export var OpenDropdowns: Array<EventEmitter<any>> = [];
 
 @Directive({
   selector: '.dropdown',
@@ -24,20 +17,31 @@ import {
   }
 })
 export class Dropdown {
-  toggle: EventEmitter<any> = new EventEmitter();
+  public toggle: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
-  constructor( @Attribute('class') public cl: string ) {
+  constructor( @Attribute('class') cl: string) {
     this.isOpen = cl.includes('open');
+    if (this.isOpen) {
+      OpenDropdowns.push(this.toggle);
+    }
     this.toggle.subscribe(() => {
+      // if not open check for other open dropdowns and close them
+      if (!this.isOpen) {
+        OpenDropdowns.forEach((n) => {
+          n.emit(null);
+        });
+        OpenDropdowns.splice(0, OpenDropdowns.length);
+        OpenDropdowns.push(this.toggle);
+      }
       this.isOpen = !this.isOpen;
     });
   }
 
-  // dosomething($event:any){console.log($event.target)}
   haltDisabledEvents(event: Event) {
     if (this.isOpen) {
       this.toggle.emit(null);
+      OpenDropdowns.splice(0, OpenDropdowns.length);
     }
   }
 }
@@ -45,18 +49,18 @@ export class Dropdown {
 @Directive({
   selector: '.dropdown-toggle',
   host: {
-    '(click)': 'setMousedown($event)'
+    '(click)': 'setMousedown($event)',
+    '[class.active]': 'dropdown.isOpen'
   }
 })
 export class DropdownToggle {
   disabled: boolean = null;
   classes: string;
 
-  constructor( @Host() private dropdown: Dropdown) { }
+  constructor( @Host() private dropdown: Dropdown ) { }
 
   setMousedown(e: Event) {
     e.stopPropagation();
-    console.log('DropdownToggleclick')
     if (this.disabled) return;
     this.dropdown.toggle.emit(null);
   }
@@ -77,7 +81,6 @@ export class DropdownToggle {
 export class DropdownMenu {
   setMousedown(e: Event) {
     e.stopPropagation();
-    console.log('DropdownMenuclick')
   }
 }
 

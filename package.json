@@ -12,9 +12,11 @@
     "dartanalyzer": "cd dist/dart && pub install && cd ../.. && ts-node scripts/ci/dart_analyzer",
     "demo-app": "ng serve",
     "test": "karma start test/karma.conf.js",
-    "tslint" : "tslint -c tslint.json 'src/**/*.ts'",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "typings": "typings install --ambient",
-    "e2e": "protractor ./protractor.conf.js"
+    "postinstall": "npm run typings",
+    "e2e": "protractor ./protractor.conf.js",
+    "inline-resources": "gulp inline-resources"
   },
   "version": "2.0.0-alpha.0",
   "license": "MIT",
