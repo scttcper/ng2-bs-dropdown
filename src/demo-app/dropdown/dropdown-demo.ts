@@ -1,9 +1,9 @@
 import {Component} from 'angular2/core';
-import {DROPDOWN_DIRECTIVES} from './dropdown';
+import {DROPDOWN_DIRECTIVES} from '../../components/dropdown/dropdown';
 
 @Component({
   selector: 'dropdown-demo',
   directives: [DROPDOWN_DIRECTIVES],
-  templateUrl: 'components/dropdown/dropdown-demo.html'
+  templateUrl: 'demo-app/dropdown/dropdown-demo.html'
 })
 export class DropdownDemo { }

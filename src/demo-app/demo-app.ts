@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {DropdownDemo} from '../components/dropdown/dropdown-demo';
+import {DropdownDemo} from './dropdown/dropdown-demo';
 
 @Component({
   selector: 'demo-app',
