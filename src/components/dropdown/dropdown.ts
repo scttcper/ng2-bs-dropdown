@@ -3,7 +3,8 @@ import {
   HostBinding,
   EventEmitter,
   Host,
-  Attribute
+  Attribute,
+  OnDestroy
 } from 'angular2/core';
 
 
@@ -24,12 +25,11 @@ function closeOpen() {
     '[class.open]': 'isOpen'
   }
 })
-export class Dropdown {
+export class Dropdown implements OnDestroy {
   public toggle: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
   constructor( @Attribute('class') cl: string ) {
-
     this.toggle.subscribe(() => {
       this.isOpen = !this.isOpen;
       if (this.isOpen) {
@@ -39,9 +39,19 @@ export class Dropdown {
     });
 
     let open = cl.includes('open');
-    if (open) { 
-      this.toggle.emit(null)
+    if (open) {
+      this.toggle.emit(null);
     };
+  }
+
+  ngOnDestroy() {
+    // remove self if in list of open dropdowns
+    let l = openDropdowns.length;
+    while (l--) {
+      if (openDropdowns[l] === this.toggle) {
+        openDropdowns.splice(l, 1);
+      }
+    }
   }
 
   haltDisabledEvents(event: Event) {
