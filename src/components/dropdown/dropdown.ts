@@ -11,7 +11,7 @@ import {
 export var openDropdowns: Array<EventEmitter<any>> = [];
 
 function closeOpen() {
-  let l = openDropdowns.length;
+  let l: number = openDropdowns.length;
   while (l--) {
     let n = openDropdowns.pop();
     n.emit(null);
