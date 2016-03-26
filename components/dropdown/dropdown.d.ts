@@ -1,9 +1,10 @@
-import { EventEmitter } from 'angular2/core';
+import { EventEmitter, OnDestroy } from 'angular2/core';
 export declare var openDropdowns: Array<EventEmitter<any>>;
-export declare class Dropdown {
+export declare class Dropdown implements OnDestroy {
     toggle: EventEmitter<any>;
     isOpen: boolean;
     constructor(cl: string);
+    ngOnDestroy(): void;
     haltDisabledEvents(event: Event): void;
 }
 export declare class DropdownToggle {

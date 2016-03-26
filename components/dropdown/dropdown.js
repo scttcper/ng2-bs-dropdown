@@ -37,6 +37,15 @@ var Dropdown = (function () {
         }
         ;
     }
+    Dropdown.prototype.ngOnDestroy = function () {
+        // remove self if in list of open dropdowns
+        var l = exports.openDropdowns.length;
+        while (l--) {
+            if (exports.openDropdowns[l] === this.toggle) {
+                exports.openDropdowns.splice(l, 1);
+            }
+        }
+    };
     Dropdown.prototype.haltDisabledEvents = function (event) {
         closeOpen();
     };
