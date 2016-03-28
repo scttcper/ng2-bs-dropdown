@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {DropdownDemo, Other} from './dropdown/dropdown-demo';
+import {DropdownDemo} from './dropdown/dropdown-demo';
 
 @Component({
   selector: 'demo-app',
@@ -12,7 +12,6 @@ import {DropdownDemo, Other} from './dropdown/dropdown-demo';
   pipes: []
 })
 @RouteConfig([
-  new Route({ path: '/', name: 'DropdownDemo', component: DropdownDemo, useAsDefault: true }),
-  // new Route({ path: '/swag', name: 'Swag', component: Other}),
+  new Route({ path: '/', name: 'DropdownDemo', component: DropdownDemo, useAsDefault: true })
 ])
 export class DemoApp { }
