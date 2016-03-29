@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # sw.bundle: ng-cli
-# sw.version: d61a7c991888f6ddea7f43fee552b25c00e46f2f
+# sw.version: 51de966c1ddc958ec9a2d778456d59e8d6ebc1c4
 # sw.file.hash: 4d3fe9b02cd8ba37eaf89dfbd729499a4bc29e1c
 /components/dropdown/dropdown.d.ts
 # sw.file.hash: cbd8c58c603748e14143d6a5a473d99b5d9f179a
@@ -11,19 +11,19 @@ CACHE MANIFEST
 /components/dropdown/dropdown.ts
 # sw.file.hash: a0602f77fa16ce9ca045c84230d3cd464066e29a
 /demo-app/demo-app.d.ts
-# sw.file.hash: 912a498e6499e1101132169a01475bfbf5e81490
+# sw.file.hash: f93de5fc79fa255fc4748bba1a40eae12232507d
 /demo-app/demo-app.html
 # sw.file.hash: fdf1bee6e83e332dec8c22d25eda0220a90c279e
 /demo-app/demo-app.js
 # sw.file.hash: fff65da2a7b510ff6097d5784a64ff7c13957bda
 /demo-app/demo-app.js.map
-# sw.file.hash: ad4c2a49bffac569a4a25b5145d5dbc45836c87a
+# sw.file.hash: 65ac834e053c3299be3204e6ac8caba5509bde07
 /demo-app/demo-app.scss
 # sw.file.hash: 2a9ff47c85367ab43c2164b2d1c1889f3be4780f
 /demo-app/demo-app.ts
 # sw.file.hash: 069c0410620ce43896fb856a5e8bcab79a89a386
 /demo-app/dropdown/dropdown-demo.d.ts
-# sw.file.hash: 94dd118122b9f1bd1c0772132490ddde0323b665
+# sw.file.hash: d3701dc43b6b56e4d85f2755ec03d37bf26fe3df
 /demo-app/dropdown/dropdown-demo.html
 # sw.file.hash: 09589fafe684959c9f0e367914b7894aaddc315d
 /demo-app/dropdown/dropdown-demo.js
@@ -33,7 +33,7 @@ CACHE MANIFEST
 /demo-app/dropdown/dropdown-demo.ts
 # sw.file.hash: 84161b857f5c547e3699ddfbffc6d8d737542e01
 /favicon.ico
-# sw.file.hash: 03383f966b6c3e1267ca0a4472803be36543c87b
+# sw.file.hash: 0fa8c11031630beca949a2d6c521f0823349ad3e
 /index.html
 # sw.file.hash: da39a3ee5e6b4b0d3255bfef95601890afd80709
 /main.d.ts
