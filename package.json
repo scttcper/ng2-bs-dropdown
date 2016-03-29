@@ -1,6 +1,6 @@
 {
   "name": "ng2-bs-dropdown",
-  "description": "Angular2 bootstrap dropdown",
+  "description": "Bootstrap dropdown directive for Angular 2",
   "homepage": "https://github.com/scttcper/ng2-bs-dropdown",
   "bugs": "https://github.com/scttcper/ng2-bs-dropdown/issues",
   "repository": {
