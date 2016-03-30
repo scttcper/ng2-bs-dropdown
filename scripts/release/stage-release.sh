@@ -34,3 +34,7 @@ find ./deploy -type f -name "*.bak" | xargs rm
 
 # To test the packages, use `npm link` in the package directories.
 # See https://docs.npmjs.com/cli/link
+
+
+# copy package to all subfolders
+for d in ./deploy/*; do cp package.json "$d"; done

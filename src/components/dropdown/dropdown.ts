@@ -105,5 +105,3 @@ export class DropdownMenu {
   }
 }
 
-
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
