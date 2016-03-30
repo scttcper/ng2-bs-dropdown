@@ -38,3 +38,4 @@ find ./deploy -type f -name "*.bak" | xargs rm
 
 # copy package to all subfolders
 for d in ./deploy/*; do cp package.json "$d"; done
+for d in ./deploy/*; do cp README.md "$d"; done
