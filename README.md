@@ -16,7 +16,7 @@ export class DropdownDemo { }
 has-dropdown.html
 ```html
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1">
     Dropdown
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -27,4 +27,4 @@ has-dropdown.html
 </div>
 ```
 
-Each dropdown must have a parent with class `dropdown-toggle` and children elements `dropdown-toggle` and `dropdown-menu`.
+Each dropdown must have a parent element with class `dropdown` and children elements `dropdown-toggle` and `dropdown-menu`.

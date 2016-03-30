@@ -18,13 +18,12 @@
     "e2e": "protractor ./protractor.conf.js",
     "inline-resources": "gulp inline-resources"
   },
-  "version": "0.0.5",
+  "version": "0.0.7",
   "license": "MIT",
   "engines": {
     "node": ">= 4.2.1 < 5"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "angular2": "2.0.0-beta.11",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.35.0",
@@ -34,7 +33,9 @@
     "rxjs": "5.0.0-beta.2",
     "systemjs": "0.19.4",
     "zone.js": "0.6.4",
-    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap": "^4.0.0-alpha.2"
+  },
+  "devDependencies": {
     "add-stream": "^1.0.0",
     "angular-cli": "^0.0.24",
     "angular-cli-github-pages": "^0.2.0",

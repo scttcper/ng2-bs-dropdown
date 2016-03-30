@@ -63,7 +63,8 @@ export class Dropdown implements OnDestroy {
   selector: '.dropdown-toggle',
   host: {
     '(click)': 'setMousedown($event)',
-    '[class.active]': 'dropdown.isOpen'
+    '[class.active]': 'dropdown.isOpen',
+    '[aria-haspopup]': 'true'
   }
 })
 export class DropdownToggle {
@@ -105,3 +106,4 @@ export class DropdownMenu {
   }
 }
 
+export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
