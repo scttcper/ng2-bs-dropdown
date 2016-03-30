@@ -10,7 +10,7 @@ import {
 
 export var openDropdowns: Array<EventEmitter<any>> = [];
 
-function closeOpen() {
+function closeOpen(): void {
   let l: number = openDropdowns.length;
   while (l--) {
     let n = openDropdowns.pop();
