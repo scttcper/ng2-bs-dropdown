@@ -100,7 +100,7 @@ var DropdownToggle = (function () {
             host: {
                 '(click)': 'setMousedown($event)',
                 '[class.active]': 'dropdown.isOpen',
-                '[aria-haspopup]': 'true'
+                '[attr.aria-haspopup]': 'true'
             }
         }),
         __param(0, core_1.Host()),

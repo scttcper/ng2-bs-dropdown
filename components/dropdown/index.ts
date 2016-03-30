@@ -64,7 +64,7 @@ export class Dropdown implements OnDestroy {
   host: {
     '(click)': 'setMousedown($event)',
     '[class.active]': 'dropdown.isOpen',
-    '[aria-haspopup]': 'true'
+    '[attr.aria-haspopup]': 'true'
   }
 })
 export class DropdownToggle {
