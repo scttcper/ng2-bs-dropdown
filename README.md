@@ -27,3 +27,4 @@ has-dropdown.html
 </div>
 ```
 
+Each dropdown must have a parent with class `dropdown-toggle` and children elements `dropdown-toggle` and `dropdown-menu`.
