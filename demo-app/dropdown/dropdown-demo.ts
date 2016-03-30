@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {DROPDOWN_DIRECTIVES} from '../../components/dropdown/dropdown';
+import {DROPDOWN_DIRECTIVES} from '../../components/dropdown';
 
 @Component({
   selector: 'dropdown-demo',

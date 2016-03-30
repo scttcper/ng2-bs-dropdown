@@ -1,0 +1,27 @@
+{
+  "name": "ng2-bs-dropdown",
+  "version": "0.0.7",
+  "description": "Bootstrap dropdown directive for Angular 2",
+  "main": "./dropdown.js",
+  "typings": "./dropdown.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/material2.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng2",
+    "components",
+    "button",
+    "dropdown"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scttcper/ng2-bs-dropdown/issues"
+  },
+  "homepage": "https://github.com/scttcper/ng2-bs-dropdown",
+  "peerDependencies": {
+    "angular2": "^2.0.0-beta.11"
+  }
+}
