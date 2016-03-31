@@ -129,4 +129,4 @@ var DropdownMenu = (function () {
 })();
 exports.DropdownMenu = DropdownMenu;
 exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle, DropdownMenu];
-//# sourceMappingURL=../../../../components/dropdown/index.js.map
+//# sourceMappingURL=../../../../components/dropdown/dropdown.js.map
