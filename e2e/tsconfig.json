@@ -8,14 +8,13 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noImplicitAny": true,
-    "outDir": "../dist/",
+    "outDir": "../dist/e2e/",
     "rootDir": ".",
     "sourceMap": true,
-    "target": "es5",
-    "inlineSources": true
+    "sourceRoot": "/",
+    "target": "es5"
   },
   "files": [
-    "main.ts",
-    "typings.d.ts"
+    "e2e.d.ts"
   ]
 }
