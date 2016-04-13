@@ -27,6 +27,7 @@ mkdir deploy
 # extension. Delete the backups immediately after.
 cp -R ./dist/components/* ./deploy/
 find ./deploy -type f \( -name "*.js" -o -name "*.ts" \) -exec sed -i.bak 's|\.\./\.\./core|@angular2-material/core|g' {} \;
+for d in ./deploy/*; do cp README.md "$d"; done 
 
 
 find ./deploy -type f -name "*.bak" | xargs rm
