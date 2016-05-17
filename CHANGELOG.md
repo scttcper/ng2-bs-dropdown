@@ -1,3 +1,9 @@
+<a name="0.1.0"></a>
+# 0.1.0 (2016-05-17)
+Updated to angular 2 release candidate.
+
+
+
 <a name="0.0.14"></a>
 ## 0.0.14 (2016-04-13)
 Update Angular dependency
