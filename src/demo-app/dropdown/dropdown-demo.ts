@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {DROPDOWN_DIRECTIVES} from '../../components/dropdown/dropdown';
 
 @Component({

@@ -5,7 +5,7 @@ import {
   Host,
   Attribute,
   OnDestroy
-} from 'angular2/core';
+} from '@angular/core';
 
 
 export var openDropdowns: Array<EventEmitter<any>> = [];
