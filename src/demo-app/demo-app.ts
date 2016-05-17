@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {Route, Routes, ROUTER_DIRECTIVES} from '@angular/router';
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+import {Route, Routes, ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {DropdownDemo} from './dropdown/dropdown-demo';
 
 @Component({
@@ -14,4 +14,9 @@ import {DropdownDemo} from './dropdown/dropdown-demo';
 @Routes([
   new Route({ path: '/', component: DropdownDemo })
 ])
-export class DemoApp { }
+export class DemoApp implements OnInit {
+  constructor(private router: Router) { }
+  ngOnInit() {
+    this.router.navigate(['/']);
+  }
+}
