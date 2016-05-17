@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('angular2/core');
+var core_1 = require('@angular/core');
 exports.openDropdowns = [];
 function closeOpen() {
     var l = exports.openDropdowns.length;
@@ -61,7 +62,7 @@ var Dropdown = (function () {
         __metadata('design:paramtypes', [String])
     ], Dropdown);
     return Dropdown;
-})();
+}());
 exports.Dropdown = Dropdown;
 var DropdownToggle = (function () {
     function DropdownToggle(dropdown, cl) {
@@ -108,7 +109,7 @@ var DropdownToggle = (function () {
         __metadata('design:paramtypes', [Dropdown, String])
     ], DropdownToggle);
     return DropdownToggle;
-})();
+}());
 exports.DropdownToggle = DropdownToggle;
 var DropdownMenu = (function () {
     function DropdownMenu() {
@@ -126,7 +127,7 @@ var DropdownMenu = (function () {
         __metadata('design:paramtypes', [])
     ], DropdownMenu);
     return DropdownMenu;
-})();
+}());
 exports.DropdownMenu = DropdownMenu;
 exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle, DropdownMenu];
-//# sourceMappingURL=../../../../components/dropdown/dropdown.js.map
+//# sourceMappingURL=dropdown.js.map

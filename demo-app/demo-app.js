@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,12 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var dropdown_demo_1 = require('./dropdown/dropdown-demo');
 var DemoApp = (function () {
-    function DemoApp() {
+    function DemoApp(router) {
+        this.router = router;
     }
+    DemoApp.prototype.ngOnInit = function () {
+        this.router.navigate(['/']);
+    };
     DemoApp = __decorate([
         core_1.Component({
             selector: 'demo-app',
@@ -23,12 +28,12 @@ var DemoApp = (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             pipes: []
         }),
-        router_1.RouteConfig([
-            new router_1.Route({ path: '/', name: 'DropdownDemo', component: dropdown_demo_1.DropdownDemo, useAsDefault: true })
+        router_1.Routes([
+            new router_1.Route({ path: '/', component: dropdown_demo_1.DropdownDemo })
         ]), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], DemoApp);
     return DemoApp;
-})();
+}());
 exports.DemoApp = DemoApp;
-//# sourceMappingURL=../../../demo-app/demo-app.js.map
+//# sourceMappingURL=demo-app.js.map
