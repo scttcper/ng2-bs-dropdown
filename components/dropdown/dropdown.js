@@ -111,23 +111,16 @@ var DropdownToggle = (function () {
     return DropdownToggle;
 }());
 exports.DropdownToggle = DropdownToggle;
-var DropdownMenu = (function () {
-    function DropdownMenu() {
-    }
-    DropdownMenu.prototype.setMousedown = function (e) {
-        e.stopPropagation();
-    };
-    DropdownMenu = __decorate([
-        core_1.Directive({
-            selector: '.dropdown-menu',
-            host: {
-                '(click)': 'setMousedown($event)'
-            }
-        }), 
-        __metadata('design:paramtypes', [])
-    ], DropdownMenu);
-    return DropdownMenu;
-}());
-exports.DropdownMenu = DropdownMenu;
-exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle, DropdownMenu];
+// @Directive({
+//   selector: '.dropdown-menu',
+//   host: {
+//     '(click)': 'setMousedown($event)'
+//   }
+// })
+// export class DropdownMenu {
+//   setMousedown(e: Event) {
+//     e.stopPropagation();
+//   }
+// }
+exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle];
 //# sourceMappingURL=dropdown.js.map

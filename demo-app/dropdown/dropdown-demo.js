@@ -13,6 +13,9 @@ var dropdown_1 = require('../../components/dropdown/dropdown');
 var DropdownDemo = (function () {
     function DropdownDemo() {
     }
+    DropdownDemo.prototype.doSomething = function () {
+        console.log('something');
+    };
     DropdownDemo = __decorate([
         core_1.Component({
             selector: 'dropdown-demo',

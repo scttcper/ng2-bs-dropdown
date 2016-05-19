@@ -3,8 +3,9 @@
     Dropdown
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <h6 class="dropdown-header">Dropdown header</h6>
+    <a class="dropdown-item" (mousedown)="doSomething()">Mousedown</a>
+    <a class="dropdown-item" (click)="doSomething()">Click</a>
+    <a class="dropdown-item" (mouseup)="doSomething()">Mouseup</a>
   </div>
 </div>
