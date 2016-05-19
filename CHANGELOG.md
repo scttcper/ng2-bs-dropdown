@@ -1,3 +1,8 @@
+<a name="0.1.1"></a>
+# 0.1.1 (2016-05-19)
+stopped blocking propagation on dropdown-menu elements
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2016-05-17)
 Updated to angular 2 release candidate.

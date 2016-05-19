@@ -94,16 +94,16 @@ export class DropdownToggle {
   }
 }
 
-@Directive({
-  selector: '.dropdown-menu',
-  host: {
-    '(click)': 'setMousedown($event)'
-  }
-})
-export class DropdownMenu {
-  setMousedown(e: Event) {
-    e.stopPropagation();
-  }
-}
+// @Directive({
+//   selector: '.dropdown-menu',
+//   host: {
+//     '(click)': 'setMousedown($event)'
+//   }
+// })
+// export class DropdownMenu {
+//   setMousedown(e: Event) {
+//     e.stopPropagation();
+//   }
+// }
 
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
+export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle];

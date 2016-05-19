@@ -6,4 +6,8 @@ import {DROPDOWN_DIRECTIVES} from '../../components/dropdown/dropdown';
   directives: [DROPDOWN_DIRECTIVES],
   templateUrl: 'demo-app/dropdown/dropdown-demo.html'
 })
-export class DropdownDemo { }
+export class DropdownDemo {
+  doSomething() {
+    console.log('something');
+  }
+}
