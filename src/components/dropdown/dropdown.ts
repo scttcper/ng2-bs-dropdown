@@ -9,15 +9,7 @@ import {
 } from '@angular/core';
 
 
-export var openDropdowns: Array<EventEmitter<any>> = [];
-
-function closeOpen(): void {
-  let l: number = openDropdowns.length;
-  while (l--) {
-    let n = openDropdowns.pop();
-    n.emit(null);
-  }
-}
+export var currentlyOpen: EventEmitter<any>;
 
 @Directive({
   selector: '.dropdown',
@@ -30,12 +22,20 @@ export class Dropdown implements OnDestroy {
   @Output() toggle: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
-  constructor( @Attribute('class') cl: string ) {
+  constructor( @Attribute('class') cl: string) {
     this.toggle.subscribe(() => {
       this.isOpen = !this.isOpen;
+      // if another dropdown is open
+      // debugger;
+      if (currentlyOpen && currentlyOpen !== this.toggle && this.isOpen) {
+        currentlyOpen.emit(null);
+      }
+      // if current open is this dropdown
+      if (currentlyOpen === this.toggle && !this.isOpen) {
+        currentlyOpen = undefined;
+      }
       if (this.isOpen) {
-        closeOpen();
-        openDropdowns.push(this.toggle);
+        currentlyOpen = this.toggle;
       }
     });
 
@@ -46,17 +46,15 @@ export class Dropdown implements OnDestroy {
   }
 
   ngOnDestroy() {
-    // remove self if in list of open dropdowns
-    let l = openDropdowns.length;
-    while (l--) {
-      if (openDropdowns[l] === this.toggle) {
-        openDropdowns.splice(l, 1);
-      }
+    if (currentlyOpen === this.toggle) {
+      currentlyOpen = undefined;
     }
   }
 
   haltDisabledEvents(event: Event) {
-    closeOpen();
+    if (currentlyOpen === this.toggle) {
+      this.isOpen = false;
+    }
   }
 }
 
@@ -72,8 +70,10 @@ export class DropdownToggle {
   disabled: boolean = null;
   classes: string;
 
-  constructor( @Host() private dropdown: Dropdown,
-    @Attribute('class') cl: string ) {
+  constructor(
+    @Host() private dropdown: Dropdown,
+    @Attribute('class') cl: string
+  ) {
     this.disabled = cl.includes('disabled');
   }
 
@@ -81,11 +81,7 @@ export class DropdownToggle {
     e.stopPropagation();
     // ignore disabled clicks
     if (this.disabled) { return; };
-    if (this.dropdown.isOpen) {
-      closeOpen();
-    } else {
-      this.dropdown.toggle.emit(null);
-    }
+    this.dropdown.toggle.emit(null);
   }
 
   @HostBinding('attr.aria-expanded')
@@ -94,17 +90,5 @@ export class DropdownToggle {
     return this.dropdown.isOpen ? 'true' : 'false';
   }
 }
-
-// @Directive({
-//   selector: '.dropdown-menu',
-//   host: {
-//     '(click)': 'setMousedown($event)'
-//   }
-// })
-// export class DropdownMenu {
-//   setMousedown(e: Event) {
-//     e.stopPropagation();
-//   }
-// }
 
 export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle];

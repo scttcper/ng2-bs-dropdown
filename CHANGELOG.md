@@ -1,3 +1,9 @@
+<a name="0.2.0"></a>
+# 0.2.0 (2016-05-20)
+Only allow one dropdown to be open at a time
+
+
+
 <a name="0.1.2"></a>
 # 0.1.2 (2016-05-19)
 added an @Output on the dropdown component
