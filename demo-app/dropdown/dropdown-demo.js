@@ -12,9 +12,13 @@ var core_1 = require('@angular/core');
 var dropdown_1 = require('../../components/dropdown/dropdown');
 var DropdownDemo = (function () {
     function DropdownDemo() {
+        this.isOpen = false;
     }
     DropdownDemo.prototype.doSomething = function () {
         console.log('something');
+    };
+    DropdownDemo.prototype.flip = function () {
+        this.isOpen = !this.isOpen;
     };
     DropdownDemo = __decorate([
         core_1.Component({

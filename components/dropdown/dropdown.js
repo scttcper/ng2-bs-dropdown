@@ -50,6 +50,10 @@ var Dropdown = (function () {
     Dropdown.prototype.haltDisabledEvents = function (event) {
         closeOpen();
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], Dropdown.prototype, "toggle", void 0);
     Dropdown = __decorate([
         core_1.Directive({
             selector: '.dropdown',

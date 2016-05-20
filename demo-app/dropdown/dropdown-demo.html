@@ -1,4 +1,6 @@
-<div class="dropdown">
+<p>Dropdown is open: {{ isOpen }}</p>
+
+<div (toggle)="flip()" class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
