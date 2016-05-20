@@ -7,7 +7,11 @@ import {DROPDOWN_DIRECTIVES} from '../../components/dropdown/dropdown';
   templateUrl: 'demo-app/dropdown/dropdown-demo.html'
 })
 export class DropdownDemo {
+  isOpen = false;
   doSomething() {
     console.log('something');
+  }
+  flip() {
+    this.isOpen = !this.isOpen;
   }
 }

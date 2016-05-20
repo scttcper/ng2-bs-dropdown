@@ -1,6 +1,13 @@
+<a name="0.1.2"></a>
+# 0.1.2 (2016-05-19)
+added an @Output on the dropdown component
+
+
+
 <a name="0.1.1"></a>
 # 0.1.1 (2016-05-19)
 stopped blocking propagation on dropdown-menu elements
+
 
 
 <a name="0.1.0"></a>

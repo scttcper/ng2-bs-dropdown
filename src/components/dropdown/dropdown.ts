@@ -4,7 +4,8 @@ import {
   EventEmitter,
   Host,
   Attribute,
-  OnDestroy
+  OnDestroy,
+  Output,
 } from '@angular/core';
 
 
@@ -26,7 +27,7 @@ function closeOpen(): void {
   }
 })
 export class Dropdown implements OnDestroy {
-  public toggle: EventEmitter<any> = new EventEmitter();
+  @Output() toggle: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
   constructor( @Attribute('class') cl: string ) {
