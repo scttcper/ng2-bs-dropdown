@@ -19,7 +19,7 @@
     "inline-resources": "gulp inline-resources",
     "deploy": "firebase deploy"
   },
-  "version": "0.1.0",
+  "version": "0.1.2",
   "license": "MIT",
   "engines": {
     "node": ">= 4.2.1 < 5"
