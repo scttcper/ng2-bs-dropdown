@@ -1,3 +1,9 @@
+<a name="0.3.0"></a>
+# 0.3.0 (2016-05-23)
+Switch from one emitter on toggle to two emitters for open and close.
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2016-05-20)
 Only allow one dropdown to be open at a time

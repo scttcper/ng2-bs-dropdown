@@ -11,7 +11,8 @@ export class DropdownDemo {
   doSomething() {
     console.log('something');
   }
-  flip() {
+  flip(status: string) {
     this.isOpen = !this.isOpen;
+    console.log(status);
   }
 }

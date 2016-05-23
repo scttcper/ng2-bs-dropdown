@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 
-export var currentlyOpen: EventEmitter<any>;
+export var currentlyOpen: Dropdown;
 
 @Directive({
   selector: '.dropdown',
@@ -19,41 +19,42 @@ export var currentlyOpen: EventEmitter<any>;
   }
 })
 export class Dropdown implements OnDestroy {
-  @Output() toggle: EventEmitter<any> = new EventEmitter();
+  @Output() open: EventEmitter<any> = new EventEmitter();
+  @Output() close: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
 
   constructor( @Attribute('class') cl: string) {
-    this.toggle.subscribe(() => {
-      this.isOpen = !this.isOpen;
-      // if another dropdown is open
-      // debugger;
-      if (currentlyOpen && currentlyOpen !== this.toggle && this.isOpen) {
-        currentlyOpen.emit(null);
+    this.open.subscribe(() => {
+      console.log('open');
+      this.isOpen = true;
+      if (currentlyOpen && currentlyOpen !== this) {
+        currentlyOpen.close.emit(null);
       }
-      // if current open is this dropdown
-      if (currentlyOpen === this.toggle && !this.isOpen) {
+      currentlyOpen = this;
+    });
+    this.close.subscribe(() => {
+      console.log('close');
+      this.isOpen = false;
+      if (currentlyOpen === this) {
         currentlyOpen = undefined;
-      }
-      if (this.isOpen) {
-        currentlyOpen = this.toggle;
       }
     });
 
     let open = cl.includes('open');
     if (open) {
-      this.toggle.emit(null);
-    };
+      this.open.emit(null)
+    }
   }
 
   ngOnDestroy() {
-    if (currentlyOpen === this.toggle) {
+    if (currentlyOpen === this) {
       currentlyOpen = undefined;
     }
   }
 
   haltDisabledEvents(event: Event) {
-    if (currentlyOpen === this.toggle) {
-      this.isOpen = false;
+    if (currentlyOpen === this) {
+      this.close.emit(null);
     }
   }
 }
@@ -81,7 +82,11 @@ export class DropdownToggle {
     e.stopPropagation();
     // ignore disabled clicks
     if (this.disabled) { return; };
-    this.dropdown.toggle.emit(null);
+    if (this.dropdown.isOpen) {
+      this.dropdown.close.emit(null);
+    } else {
+      this.dropdown.open.emit(null);
+    }
   }
 
   @HostBinding('attr.aria-expanded')
