@@ -25,7 +25,6 @@ export class Dropdown implements OnDestroy {
 
   constructor( @Attribute('class') cl: string) {
     this.open.subscribe(() => {
-      console.log('open');
       this.isOpen = true;
       if (currentlyOpen && currentlyOpen !== this) {
         currentlyOpen.close.emit(null);
@@ -33,7 +32,6 @@ export class Dropdown implements OnDestroy {
       currentlyOpen = this;
     });
     this.close.subscribe(() => {
-      console.log('close');
       this.isOpen = false;
       if (currentlyOpen === this) {
         currentlyOpen = undefined;

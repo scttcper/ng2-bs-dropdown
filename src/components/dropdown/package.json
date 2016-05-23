@@ -1,6 +1,6 @@
 {
   "name": "ng2-bs-dropdown",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Bootstrap dropdown directive for Angular 2",
   "main": "./dropdown.js",
   "typings": "./dropdown.d.ts",
