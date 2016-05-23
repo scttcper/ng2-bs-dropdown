@@ -12,48 +12,50 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 var core_1 = require('@angular/core');
-exports.openDropdowns = [];
-function closeOpen() {
-    var l = exports.openDropdowns.length;
-    while (l--) {
-        var n = exports.openDropdowns.pop();
-        n.emit(null);
-    }
-}
 var Dropdown = (function () {
     function Dropdown(cl) {
         var _this = this;
-        this.toggle = new core_1.EventEmitter();
+        this.open = new core_1.EventEmitter();
+        this.close = new core_1.EventEmitter();
         this.isOpen = false;
-        this.toggle.subscribe(function () {
-            _this.isOpen = !_this.isOpen;
-            if (_this.isOpen) {
-                closeOpen();
-                exports.openDropdowns.push(_this.toggle);
+        this.open.subscribe(function () {
+            console.log('open');
+            _this.isOpen = true;
+            if (exports.currentlyOpen && exports.currentlyOpen !== _this) {
+                exports.currentlyOpen.close.emit(null);
+            }
+            exports.currentlyOpen = _this;
+        });
+        this.close.subscribe(function () {
+            console.log('close');
+            _this.isOpen = false;
+            if (exports.currentlyOpen === _this) {
+                exports.currentlyOpen = undefined;
             }
         });
         var open = cl.includes('open');
         if (open) {
-            this.toggle.emit(null);
+            this.open.emit(null);
         }
-        ;
     }
     Dropdown.prototype.ngOnDestroy = function () {
-        // remove self if in list of open dropdowns
-        var l = exports.openDropdowns.length;
-        while (l--) {
-            if (exports.openDropdowns[l] === this.toggle) {
-                exports.openDropdowns.splice(l, 1);
-            }
+        if (exports.currentlyOpen === this) {
+            exports.currentlyOpen = undefined;
         }
     };
     Dropdown.prototype.haltDisabledEvents = function (event) {
-        closeOpen();
+        if (exports.currentlyOpen === this) {
+            this.close.emit(null);
+        }
     };
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
-    ], Dropdown.prototype, "toggle", void 0);
+    ], Dropdown.prototype, "open", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], Dropdown.prototype, "close", void 0);
     Dropdown = __decorate([
         core_1.Directive({
             selector: '.dropdown',
@@ -82,10 +84,10 @@ var DropdownToggle = (function () {
         }
         ;
         if (this.dropdown.isOpen) {
-            closeOpen();
+            this.dropdown.close.emit(null);
         }
         else {
-            this.dropdown.toggle.emit(null);
+            this.dropdown.open.emit(null);
         }
     };
     Object.defineProperty(DropdownToggle.prototype, "isAriaExpanded", {
@@ -115,16 +117,5 @@ var DropdownToggle = (function () {
     return DropdownToggle;
 }());
 exports.DropdownToggle = DropdownToggle;
-// @Directive({
-//   selector: '.dropdown-menu',
-//   host: {
-//     '(click)': 'setMousedown($event)'
-//   }
-// })
-// export class DropdownMenu {
-//   setMousedown(e: Event) {
-//     e.stopPropagation();
-//   }
-// }
 exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle];
 //# sourceMappingURL=dropdown.js.map

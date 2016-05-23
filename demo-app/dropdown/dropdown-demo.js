@@ -17,8 +17,9 @@ var DropdownDemo = (function () {
     DropdownDemo.prototype.doSomething = function () {
         console.log('something');
     };
-    DropdownDemo.prototype.flip = function () {
+    DropdownDemo.prototype.flip = function (status) {
         this.isOpen = !this.isOpen;
+        console.log(status);
     };
     DropdownDemo = __decorate([
         core_1.Component({

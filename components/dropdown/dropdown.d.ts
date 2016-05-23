@@ -1,7 +1,8 @@
 import { EventEmitter, OnDestroy } from '@angular/core';
-export declare var openDropdowns: Array<EventEmitter<any>>;
+export declare var currentlyOpen: Dropdown;
 export declare class Dropdown implements OnDestroy {
-    toggle: EventEmitter<any>;
+    open: EventEmitter<any>;
+    close: EventEmitter<any>;
     isOpen: boolean;
     constructor(cl: string);
     ngOnDestroy(): void;

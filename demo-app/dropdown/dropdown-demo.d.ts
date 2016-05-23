@@ -1,5 +1,5 @@
 export declare class DropdownDemo {
     isOpen: boolean;
     doSomething(): void;
-    flip(): void;
+    flip(status: string): void;
 }
