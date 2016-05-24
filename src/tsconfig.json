@@ -5,6 +5,7 @@
     "experimentalDecorators": true,
     "mapRoot": "",
     "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noImplicitAny": true,
