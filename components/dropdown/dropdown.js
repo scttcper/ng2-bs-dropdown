@@ -18,33 +18,32 @@ var Dropdown = (function () {
         this.open = new core_1.EventEmitter();
         this.close = new core_1.EventEmitter();
         this.isOpen = false;
+        this.isMobileOpen = false;
         this.open.subscribe(function () {
             _this.isOpen = true;
-            if (exports.currentlyOpen && exports.currentlyOpen !== _this) {
-                exports.currentlyOpen.close.emit(null);
-            }
-            exports.currentlyOpen = _this;
         });
         this.close.subscribe(function () {
             _this.isOpen = false;
-            if (exports.currentlyOpen === _this) {
-                exports.currentlyOpen = undefined;
-            }
         });
         var open = cl.includes('open');
         if (open) {
             this.open.emit(null);
         }
     }
-    Dropdown.prototype.ngOnDestroy = function () {
-        if (exports.currentlyOpen === this) {
-            exports.currentlyOpen = undefined;
+    Dropdown.prototype.backdropClick = function (event) {
+        console.log('backdrop');
+        if (this.isOpen) {
+            this.close.emit(null);
+            event.stopPropagation();
         }
     };
-    Dropdown.prototype.haltDisabledEvents = function () {
-        if (exports.currentlyOpen === this) {
+    Dropdown.prototype.documentClick = function (event) {
+        if (this.isOpen) {
             this.close.emit(null);
         }
+    };
+    Dropdown.prototype.ontouchstart = function () {
+        this.isMobileOpen = this.isOpen;
     };
     __decorate([
         core_1.Output(), 
@@ -55,13 +54,14 @@ var Dropdown = (function () {
         __metadata('design:type', core_1.EventEmitter)
     ], Dropdown.prototype, "close", void 0);
     Dropdown = __decorate([
-        core_1.Directive({
+        core_1.Component({
             selector: '.dropdown',
             host: {
-                // '(document:click)': 'haltDisabledEvents()',
-                '(document:tap)': 'haltDisabledEvents()',
-                '[class.open]': 'isOpen'
-            }
+                '(document:ontouchstart)': 'ontouchstart($event)',
+                '(document:click)': 'documentClick($event)',
+                '[class.open]': 'isOpen',
+            },
+            template: "\n    <div *ngIf=\"isMobileOpen\" (click)=\"backdropClick($event)\" class=\"dropdown-backdrop\"></div>\n    <ng-content></ng-content>\n  ",
         }),
         __param(0, core_1.Attribute('class')), 
         __metadata('design:paramtypes', [String])
@@ -76,7 +76,7 @@ var DropdownToggle = (function () {
         this.disabled = cl.includes('disabled');
     }
     DropdownToggle.prototype.setMousedown = function (e) {
-        e.stopPropagation();
+        // e.stopPropagation();
         // ignore disabled clicks
         if (this.disabled) {
             return;

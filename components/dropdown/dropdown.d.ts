@@ -1,12 +1,13 @@
-import { EventEmitter, OnDestroy } from '@angular/core';
-export declare var currentlyOpen: Dropdown;
-export declare class Dropdown implements OnDestroy {
+import { EventEmitter } from '@angular/core';
+export declare class Dropdown {
     open: EventEmitter<any>;
     close: EventEmitter<any>;
     isOpen: boolean;
+    isMobileOpen: boolean;
     constructor(cl: string);
-    ngOnDestroy(): void;
-    haltDisabledEvents(): void;
+    backdropClick(event: Event): void;
+    documentClick(event: Event): void;
+    ontouchstart(): void;
 }
 export declare class DropdownToggle {
     private dropdown;
