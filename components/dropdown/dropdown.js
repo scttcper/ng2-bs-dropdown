@@ -42,8 +42,9 @@ var Dropdown = (function () {
             this.close.emit(null);
         }
     };
-    Dropdown.prototype.ontouchstart = function () {
-        this.isMobileOpen = this.isOpen;
+    Dropdown.prototype.ontouchend = function () {
+        console.log('touched');
+        this.isMobileOpen = true;
     };
     __decorate([
         core_1.Output(), 
@@ -57,11 +58,11 @@ var Dropdown = (function () {
         core_1.Component({
             selector: '.dropdown',
             host: {
-                '(document:ontouchstart)': 'ontouchstart($event)',
+                '(document:touchend)': 'ontouchend($event)',
                 '(document:click)': 'documentClick($event)',
                 '[class.open]': 'isOpen',
             },
-            template: "\n    <div *ngIf=\"isMobileOpen\" (click)=\"backdropClick($event)\" class=\"dropdown-backdrop\"></div>\n    <ng-content></ng-content>\n  ",
+            template: "\n    <div *ngIf=\"isMobileOpen && isOpen\" (click)=\"backdropClick($event)\" class=\"dropdown-backdrop\"></div>\n    <ng-content></ng-content>\n  ",
         }),
         __param(0, core_1.Attribute('class')), 
         __metadata('design:paramtypes', [String])

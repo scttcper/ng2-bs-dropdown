@@ -7,7 +7,7 @@ export declare class Dropdown {
     constructor(cl: string);
     backdropClick(event: Event): void;
     documentClick(event: Event): void;
-    ontouchstart(): void;
+    ontouchend(): void;
 }
 export declare class DropdownToggle {
     private dropdown;
