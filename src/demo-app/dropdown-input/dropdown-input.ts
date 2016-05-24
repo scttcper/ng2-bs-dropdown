@@ -17,8 +17,8 @@ import {DROPDOWN_DIRECTIVES, Dropdown} from '../../components/dropdown/dropdown'
   ],
   template: `
   <div #dropdown (open)="openDropdown()" class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button">
-      {{ state.name || 'Content' }}
+    <button class="btn btn-primary dropdown-toggle" type="button">
+      {{ state.name || 'Select a State' }}
     </button>
     <div class="dropdown-menu">
       <div class="bs-searchbox">
