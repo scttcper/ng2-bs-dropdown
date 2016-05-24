@@ -58,7 +58,8 @@ var Dropdown = (function () {
         core_1.Directive({
             selector: '.dropdown',
             host: {
-                '(document:click)': 'haltDisabledEvents()',
+                // '(document:click)': 'haltDisabledEvents()',
+                '(document:tap)': 'haltDisabledEvents()',
                 '[class.open]': 'isOpen'
             }
         }),
