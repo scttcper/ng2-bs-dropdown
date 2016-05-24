@@ -32,4 +32,4 @@ var DropdownDemo = (function () {
     return DropdownDemo;
 }());
 exports.DropdownDemo = DropdownDemo;
-//# sourceMappingURL=dropdown-demo.js.map
+//# sourceMappingURL=/Users/scoope7/ng2-bs-dropdown/tmp/broccoli_type_script_compiler-input_base_path-DZqbAegb.tmp/0/demo-app/dropdown/dropdown-demo.js.map

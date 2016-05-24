@@ -31,7 +31,6 @@ var Dropdown = (function () {
         }
     }
     Dropdown.prototype.backdropClick = function (event) {
-        console.log('backdrop');
         if (this.isOpen) {
             this.close.emit(null);
             event.stopPropagation();
@@ -43,7 +42,6 @@ var Dropdown = (function () {
         }
     };
     Dropdown.prototype.ontouchend = function () {
-        console.log('touched');
         this.isMobileOpen = true;
     };
     __decorate([
@@ -58,7 +56,7 @@ var Dropdown = (function () {
         core_1.Component({
             selector: '.dropdown',
             host: {
-                '(document:touchend)': 'ontouchend($event)',
+                '(touchend)': 'ontouchend($event)',
                 '(document:click)': 'documentClick($event)',
                 '[class.open]': 'isOpen',
             },
@@ -118,4 +116,4 @@ var DropdownToggle = (function () {
 }());
 exports.DropdownToggle = DropdownToggle;
 exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle];
-//# sourceMappingURL=dropdown.js.map
+//# sourceMappingURL=/Users/scoope7/ng2-bs-dropdown/tmp/broccoli_type_script_compiler-input_base_path-DZqbAegb.tmp/0/components/dropdown/dropdown.js.map
