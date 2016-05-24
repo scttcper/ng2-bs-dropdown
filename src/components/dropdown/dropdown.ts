@@ -88,7 +88,6 @@ export class DropdownToggle {
   }
 
   @HostBinding('attr.aria-expanded')
-  /** Gets the aria-expanded value for the component, which must be a string for Dart. */
   get isAriaExpanded(): string {
     return this.dropdown.isOpen ? 'true' : 'false';
   }
