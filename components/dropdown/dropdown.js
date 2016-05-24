@@ -19,7 +19,6 @@ var Dropdown = (function () {
         this.close = new core_1.EventEmitter();
         this.isOpen = false;
         this.open.subscribe(function () {
-            console.log('open');
             _this.isOpen = true;
             if (exports.currentlyOpen && exports.currentlyOpen !== _this) {
                 exports.currentlyOpen.close.emit(null);
@@ -27,7 +26,6 @@ var Dropdown = (function () {
             exports.currentlyOpen = _this;
         });
         this.close.subscribe(function () {
-            console.log('close');
             _this.isOpen = false;
             if (exports.currentlyOpen === _this) {
                 exports.currentlyOpen = undefined;
