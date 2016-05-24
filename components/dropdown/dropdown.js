@@ -41,7 +41,7 @@ var Dropdown = (function () {
             exports.currentlyOpen = undefined;
         }
     };
-    Dropdown.prototype.haltDisabledEvents = function (event) {
+    Dropdown.prototype.haltDisabledEvents = function () {
         if (exports.currentlyOpen === this) {
             this.close.emit(null);
         }
@@ -58,9 +58,7 @@ var Dropdown = (function () {
         core_1.Directive({
             selector: '.dropdown',
             host: {
-                // '(document:click)': 'haltDisabledEvents()',
-                // '(document:mousedown)': 'haltDisabledEvents()',
-                '(document:mouseup)': 'haltDisabledEvents()',
+                '(document:click)': 'haltDisabledEvents()',
                 '[class.open]': 'isOpen'
             }
         }),

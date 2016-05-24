@@ -6,7 +6,7 @@ export declare class Dropdown implements OnDestroy {
     isOpen: boolean;
     constructor(cl: string);
     ngOnDestroy(): void;
-    haltDisabledEvents(event: Event): void;
+    haltDisabledEvents(): void;
 }
 export declare class DropdownToggle {
     private dropdown;
