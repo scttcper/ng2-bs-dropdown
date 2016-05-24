@@ -27,8 +27,6 @@ var barrels = [
     '@angular/core',
     '@angular/common',
     '@angular/compiler',
-    '@angular/http',
-    '@angular/router',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
     // Thirdparty barrels.
