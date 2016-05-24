@@ -1,3 +1,9 @@
+<a name="0.4.0"></a>
+# 0.4.0 (2016-05-24)
+Now adds a dropdown-backdrop when the dropdown is open to capture mobile clicks just like official jquery library.
+
+
+
 <a name="0.3.0"></a>
 # 0.3.0 (2016-05-23)
 Switch from one emitter on toggle to two emitters for open and close.

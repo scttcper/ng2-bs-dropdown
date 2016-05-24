@@ -1,61 +1,61 @@
 import {
   Directive,
+  Component,
   HostBinding,
   EventEmitter,
   Host,
   Attribute,
-  OnDestroy,
   Output,
 } from '@angular/core';
 
-
-export var currentlyOpen: Dropdown;
-
-@Directive({
+@Component({
   selector: '.dropdown',
   host: {
-    '(document:click)': 'haltDisabledEvents()',
-    '[class.open]': 'isOpen'
-  }
+    '(touchend)': 'ontouchend($event)',
+    '(document:click)': 'documentClick($event)',
+    '[class.open]': 'isOpen',
+  },
+  template: `
+    <div *ngIf="isMobileOpen && isOpen" (click)="backdropClick($event)" class="dropdown-backdrop"></div>
+    <ng-content></ng-content>
+  `,
 })
-export class Dropdown implements OnDestroy {
+export class Dropdown {
   @Output() open: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
+  public isMobileOpen: boolean = false;
 
   constructor( @Attribute('class') cl: string) {
     this.open.subscribe(() => {
       this.isOpen = true;
-      if (currentlyOpen && currentlyOpen !== this) {
-        currentlyOpen.close.emit(null);
-      }
-      currentlyOpen = this;
     });
     this.close.subscribe(() => {
       this.isOpen = false;
-      if (currentlyOpen === this) {
-        currentlyOpen = undefined;
-      }
     });
 
     let open = cl.includes('open');
     if (open) {
-      this.open.emit(null)
+      this.open.emit(null);
     }
   }
 
-  ngOnDestroy() {
-    if (currentlyOpen === this) {
-      currentlyOpen = undefined;
+  backdropClick(event: Event) {
+    if (this.isOpen) {
+      this.close.emit(null);
+      event.stopPropagation();
     }
   }
-
-  haltDisabledEvents(event: Event) {
-    if (currentlyOpen === this) {
+  documentClick(event: Event) {
+    if (this.isOpen) {
       this.close.emit(null);
     }
   }
+  ontouchend() {
+    this.isMobileOpen = true;
+  }
 }
+
 
 @Directive({
   selector: '.dropdown-toggle',
@@ -77,7 +77,7 @@ export class DropdownToggle {
   }
 
   setMousedown(e: Event) {
-    e.stopPropagation();
+    // e.stopPropagation();
     // ignore disabled clicks
     if (this.disabled) { return; };
     if (this.dropdown.isOpen) {
