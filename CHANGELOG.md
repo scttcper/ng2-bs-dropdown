@@ -1,3 +1,9 @@
+<a name="0.4.2"></a>
+# 0.4.2 (2016-05-24)
+Fix source map warning.
+
+
+
 <a name="0.4.0"></a>
 # 0.4.0 (2016-05-24)
 Now adds a dropdown-backdrop when the dropdown is open to capture mobile clicks just like official jquery library.

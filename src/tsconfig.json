@@ -5,16 +5,16 @@
     "experimentalDecorators": true,
     "mapRoot": "",
     "module": "commonjs",
-    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noImplicitAny": true,
-    "outDir": "../dist/",
-    "rootDir": ".",
+    "outDir": "../../dist/",
+    "rootDir": "..",
     "sourceMap": true,
     "target": "es5",
     "inlineSources": true,
-    "stripInternal": true
+    "stripInternal": true,
+    "baseUrl": ""
   },
   "files": [
     "main.ts",
