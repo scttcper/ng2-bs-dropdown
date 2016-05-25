@@ -16,7 +16,10 @@ import {
     '[class.open]': 'isOpen',
   },
   template: `
-    <div *ngIf="isMobileOpen && isOpen" (click)="backdropClick($event)" class="dropdown-backdrop"></div>
+    <div *ngIf="isMobileOpen && isOpen"
+         (click)="backdropClick($event)"
+         class="dropdown-backdrop">
+    </div>
     <ng-content></ng-content>
   `,
 })
@@ -62,8 +65,8 @@ export class Dropdown {
   host: {
     '(click)': 'setMousedown($event)',
     '[class.active]': 'dropdown.isOpen',
-    '[attr.aria-haspopup]': 'true'
-  }
+    '[attr.aria-haspopup]': 'true',
+  },
 })
 export class DropdownToggle {
   disabled: boolean = null;
