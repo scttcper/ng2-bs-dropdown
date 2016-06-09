@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/scttcper/ng2-bs-dropdown",
   "peerDependencies": {
-    "angular2": "^2.0.0-rc.1"
+    "@angular/core": "^2.0.0-rc.1"
   }
 }
