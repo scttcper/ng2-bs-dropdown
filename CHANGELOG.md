@@ -1,3 +1,9 @@
+<a name="0.4.3"></a>
+# 0.4.3 (2016-06-09)
+Fix npm peer warning on install.
+
+
+
 <a name="0.4.2"></a>
 # 0.4.2 (2016-05-24)
 Fix source map warning.
