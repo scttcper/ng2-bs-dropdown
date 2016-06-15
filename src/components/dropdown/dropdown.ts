@@ -38,12 +38,12 @@ export class Dropdown {
 
     let open = cl.includes('open');
     if (open) {
-      this.open.emit(null);
+      this.open.emit(undefined);
     }
   }
   backdropClick(event: Event) {
     if (this.isOpen) {
-      this.close.emit(null);
+      this.close.emit(undefined);
       event.stopPropagation();
     }
   }
@@ -62,7 +62,7 @@ export class Dropdown {
   },
 })
 export class DropdownToggle {
-  disabled: boolean = null;
+  disabled: boolean;
   classes: string;
 
   constructor(
@@ -77,9 +77,9 @@ export class DropdownToggle {
     // ignore disabled clicks
     if (this.disabled) { return; };
     if (this.dropdown.isOpen) {
-      this.dropdown.close.emit(null);
+      this.dropdown.close.emit(undefined);
     } else {
-      this.dropdown.open.emit(null);
+      this.dropdown.open.emit(undefined);
     }
     event.stopPropagation();
   }
@@ -93,20 +93,20 @@ export class DropdownToggle {
 @Directive({
   selector: '.dropdown-menu',
   host: {
-    '(click)': 'setMousedown($event)'
+    '(click)': 'setMousedown($event)',
   },
 })
 export class DropdownMenu {
-  disabled: boolean = null;
+  disabled: boolean;
   classes: string;
 
   constructor(@Host() private dropdown: Dropdown) {}
 
   setMousedown(e: Event) {
     if (this.dropdown.isOpen) {
-      this.dropdown.close.emit(null);
+      this.dropdown.close.emit(undefined);
     } else {
-      this.dropdown.open.emit(null);
+      this.dropdown.open.emit(undefined);
     }
   }
 }
