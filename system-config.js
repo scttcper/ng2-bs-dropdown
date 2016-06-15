@@ -50,4 +50,4 @@ System.config({
 });
 // Apply the user's configuration.
 System.config({ map: map, packages: packages });
-//# sourceMappingURL=/Users/scoope7/ng2-bs-dropdown/tmp/broccoli_type_script_compiler-input_base_path-6ErV4cpt.tmp/0/system-config.js.map
+//# sourceMappingURL=system-config.js.map

@@ -36,11 +36,6 @@ var Dropdown = (function () {
             event.stopPropagation();
         }
     };
-    Dropdown.prototype.documentClick = function (event) {
-        if (this.isOpen) {
-            this.close.emit(null);
-        }
-    };
     Dropdown.prototype.ontouchend = function () {
         this.isMobileOpen = true;
     };
@@ -57,10 +52,9 @@ var Dropdown = (function () {
             selector: '.dropdown',
             host: {
                 '(touchend)': 'ontouchend($event)',
-                '(document:click)': 'documentClick($event)',
                 '[class.open]': 'isOpen',
             },
-            template: "\n    <div *ngIf=\"isMobileOpen && isOpen\" (click)=\"backdropClick($event)\" class=\"dropdown-backdrop\"></div>\n    <ng-content></ng-content>\n  ",
+            template: "\n    <div *ngIf=\"isOpen\"\n         (click)=\"backdropClick($event)\"\n         class=\"dropdown-backdrop\">\n    </div>\n    <ng-content></ng-content>\n  ",
         }),
         __param(0, core_1.Attribute('class')), 
         __metadata('design:paramtypes', [String])
@@ -87,6 +81,7 @@ var DropdownToggle = (function () {
         else {
             this.dropdown.open.emit(null);
         }
+        event.stopPropagation();
     };
     Object.defineProperty(DropdownToggle.prototype, "isAriaExpanded", {
         get: function () {
@@ -105,8 +100,8 @@ var DropdownToggle = (function () {
             host: {
                 '(click)': 'setMousedown($event)',
                 '[class.active]': 'dropdown.isOpen',
-                '[attr.aria-haspopup]': 'true'
-            }
+                '[attr.aria-haspopup]': 'true',
+            },
         }),
         __param(0, core_1.Host()),
         __param(1, core_1.Attribute('class')), 
@@ -116,4 +111,4 @@ var DropdownToggle = (function () {
 }());
 exports.DropdownToggle = DropdownToggle;
 exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle];
-//# sourceMappingURL=/Users/scoope7/ng2-bs-dropdown/tmp/broccoli_type_script_compiler-input_base_path-6ErV4cpt.tmp/0/components/dropdown/dropdown.js.map
+//# sourceMappingURL=dropdown.js.map

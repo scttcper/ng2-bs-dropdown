@@ -6,7 +6,6 @@ export declare class Dropdown {
     isMobileOpen: boolean;
     constructor(cl: string);
     backdropClick(event: Event): void;
-    documentClick(event: Event): void;
     ontouchend(): void;
 }
 export declare class DropdownToggle {

@@ -119,4 +119,4 @@ var availableStates = [
     { "name": "Wisconsin", "alpha-2": "WI" },
     { "name": "Wyoming", "alpha-2": "WY" },
 ];
-//# sourceMappingURL=/Users/scoope7/ng2-bs-dropdown/tmp/broccoli_type_script_compiler-input_base_path-6ErV4cpt.tmp/0/demo-app/dropdown-input/dropdown-input.js.map
+//# sourceMappingURL=dropdown-input.js.map
