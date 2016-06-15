@@ -27,12 +27,12 @@ var Dropdown = (function () {
         });
         var open = cl.includes('open');
         if (open) {
-            this.open.emit(null);
+            this.open.emit(undefined);
         }
     }
     Dropdown.prototype.backdropClick = function (event) {
         if (this.isOpen) {
-            this.close.emit(null);
+            this.close.emit(undefined);
             event.stopPropagation();
         }
     };
@@ -65,7 +65,6 @@ exports.Dropdown = Dropdown;
 var DropdownToggle = (function () {
     function DropdownToggle(dropdown, cl) {
         this.dropdown = dropdown;
-        this.disabled = null;
         this.disabled = cl.includes('disabled');
     }
     DropdownToggle.prototype.setMousedown = function (e) {
@@ -76,10 +75,10 @@ var DropdownToggle = (function () {
         }
         ;
         if (this.dropdown.isOpen) {
-            this.dropdown.close.emit(null);
+            this.dropdown.close.emit(undefined);
         }
         else {
-            this.dropdown.open.emit(null);
+            this.dropdown.open.emit(undefined);
         }
         event.stopPropagation();
     };
@@ -113,21 +112,20 @@ exports.DropdownToggle = DropdownToggle;
 var DropdownMenu = (function () {
     function DropdownMenu(dropdown) {
         this.dropdown = dropdown;
-        this.disabled = null;
     }
     DropdownMenu.prototype.setMousedown = function (e) {
         if (this.dropdown.isOpen) {
-            this.dropdown.close.emit(null);
+            this.dropdown.close.emit(undefined);
         }
         else {
-            this.dropdown.open.emit(null);
+            this.dropdown.open.emit(undefined);
         }
     };
     DropdownMenu = __decorate([
         core_1.Directive({
             selector: '.dropdown-menu',
             host: {
-                '(click)': 'setMousedown($event)'
+                '(click)': 'setMousedown($event)',
             },
         }),
         __param(0, core_1.Host()), 

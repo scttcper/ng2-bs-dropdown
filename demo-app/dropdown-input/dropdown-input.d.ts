@@ -4,9 +4,9 @@ export declare class DropdownInput {
     private renderer;
     input: ElementRef;
     dropdown: Dropdown;
-    private state;
-    private searchQuery;
-    private filteredAvailable;
+    searchQuery: string;
+    filteredAvailable: string[];
+    state: string;
     constructor(renderer: Renderer);
     openDropdown(): void;
     useSearch(): void;
