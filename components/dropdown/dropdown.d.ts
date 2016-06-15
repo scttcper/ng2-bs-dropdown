@@ -16,4 +16,11 @@ export declare class DropdownToggle {
     setMousedown(e: Event): void;
     isAriaExpanded: string;
 }
+export declare class DropdownMenu {
+    private dropdown;
+    disabled: boolean;
+    classes: string;
+    constructor(dropdown: Dropdown);
+    setMousedown(e: Event): void;
+}
 export declare const DROPDOWN_DIRECTIVES: Array<any>;

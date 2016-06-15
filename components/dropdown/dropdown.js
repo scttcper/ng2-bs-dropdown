@@ -110,5 +110,31 @@ var DropdownToggle = (function () {
     return DropdownToggle;
 }());
 exports.DropdownToggle = DropdownToggle;
-exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle];
+var DropdownMenu = (function () {
+    function DropdownMenu(dropdown) {
+        this.dropdown = dropdown;
+        this.disabled = null;
+    }
+    DropdownMenu.prototype.setMousedown = function (e) {
+        if (this.dropdown.isOpen) {
+            this.dropdown.close.emit(null);
+        }
+        else {
+            this.dropdown.open.emit(null);
+        }
+    };
+    DropdownMenu = __decorate([
+        core_1.Directive({
+            selector: '.dropdown-menu',
+            host: {
+                '(click)': 'setMousedown($event)'
+            },
+        }),
+        __param(0, core_1.Host()), 
+        __metadata('design:paramtypes', [Dropdown])
+    ], DropdownMenu);
+    return DropdownMenu;
+}());
+exports.DropdownMenu = DropdownMenu;
+exports.DROPDOWN_DIRECTIVES = [Dropdown, DropdownToggle, DropdownMenu];
 //# sourceMappingURL=dropdown.js.map
