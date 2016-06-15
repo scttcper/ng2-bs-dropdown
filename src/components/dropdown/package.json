@@ -1,6 +1,6 @@
 {
   "name": "ng2-bs-dropdown",
-  "version": "0.4.3",
+  "version": "0.5.1",
   "description": "Bootstrap dropdown directive for Angular 2",
   "main": "./dropdown.js",
   "typings": "./dropdown.d.ts",
@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/scttcper/ng2-bs-dropdown",
   "peerDependencies": {
-    "@angular/core": "^2.0.0-rc.1"
+    "@angular/core": "^2.0.0-rc.2"
   }
 }

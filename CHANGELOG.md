@@ -1,3 +1,11 @@
+<a name="0.5.0"></a>
+# 0.5.1 (2016-06-09)
+Remove document click listener and show dropdown-backdrop for all.
+Add DropdownMenu component that will close menu on click.
+If you want the menu to remain open after click capture the `$event` and do `event.stopPropagation();`
+
+
+
 <a name="0.4.3"></a>
 # 0.4.3 (2016-06-09)
 Fix npm peer warning on install.
@@ -62,5 +70,3 @@ Update build files and hopefully fix source files
 ## 0.0.1 (2016-03-24)
 
 Release First Version
-
-

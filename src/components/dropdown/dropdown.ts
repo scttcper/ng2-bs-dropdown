@@ -12,11 +12,10 @@ import {
   selector: '.dropdown',
   host: {
     '(touchend)': 'ontouchend($event)',
-    '(document:click)': 'documentClick($event)',
     '[class.open]': 'isOpen',
   },
   template: `
-    <div *ngIf="isMobileOpen && isOpen"
+    <div *ngIf="isOpen"
          (click)="backdropClick($event)"
          class="dropdown-backdrop">
     </div>
@@ -42,16 +41,10 @@ export class Dropdown {
       this.open.emit(null);
     }
   }
-
   backdropClick(event: Event) {
     if (this.isOpen) {
       this.close.emit(null);
       event.stopPropagation();
-    }
-  }
-  documentClick(event: Event) {
-    if (this.isOpen) {
-      this.close.emit(null);
     }
   }
   ontouchend() {
@@ -88,6 +81,7 @@ export class DropdownToggle {
     } else {
       this.dropdown.open.emit(null);
     }
+    event.stopPropagation();
   }
 
   @HostBinding('attr.aria-expanded')
@@ -96,4 +90,25 @@ export class DropdownToggle {
   }
 }
 
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle];
+@Directive({
+  selector: '.dropdown-menu',
+  host: {
+    '(click)': 'setMousedown($event)'
+  },
+})
+export class DropdownMenu {
+  disabled: boolean = null;
+  classes: string;
+
+  constructor(@Host() private dropdown: Dropdown) {}
+
+  setMousedown(e: Event) {
+    if (this.dropdown.isOpen) {
+      this.dropdown.close.emit(null);
+    } else {
+      this.dropdown.open.emit(null);
+    }
+  }
+}
+
+export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
