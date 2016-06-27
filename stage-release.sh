@@ -13,7 +13,7 @@ rm -rf ./dist
 rm -rf ./deploy
 
 # Perform a build with the modified tsconfig.json.
-ng build
+npm run ng build
 
 # deploy/ serves as a working directory to stage the release.
 mkdir deploy
@@ -24,7 +24,7 @@ mkdir deploy
 # extension. Delete the backups immediately after.
 cp -R ./dist/components/* ./deploy/
 find ./deploy -type f \( -name "*.js" -o -name "*.ts" \) -exec sed -i.bak 's|\.\./\.\./core|@angular2-material/core|g' {} \;
-for d in ./deploy/*; do cp README.md "$d"; done 
+for d in ./deploy/*; do cp README.md "$d"; done
 
 
 find ./deploy -type f -name "*.bak" | xargs rm

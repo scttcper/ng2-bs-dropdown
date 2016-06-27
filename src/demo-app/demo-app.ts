@@ -9,7 +9,7 @@ import {DropdownInput} from './dropdown-input/dropdown-input';
   styleUrls: ['demo-app/demo-app.css'],
   directives: [DropdownDemo, DropdownInput],
   encapsulation: ViewEncapsulation.None,
-  pipes: []
+  pipes: [],
 })
 export class DemoApp {
   constructor() { }

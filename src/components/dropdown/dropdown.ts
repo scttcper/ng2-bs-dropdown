@@ -6,13 +6,35 @@ import {
   Host,
   Attribute,
   Output,
+  ContentChildren,
+  QueryList,
+  ElementRef,
+  Renderer,
 } from '@angular/core';
+
+@Directive({
+  selector: '.dropdown-item:not(.disabled)',
+})
+export class DropdownItem {
+
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer
+  ) {}
+  focus() {
+    this.renderer.invokeElementMethod(this.el.nativeElement, 'focus');
+  }
+}
 
 @Component({
   selector: '.dropdown',
   host: {
     '(touchend)': 'ontouchend($event)',
     '[class.open]': 'isOpen',
+    '(keydown.escape)': 'handleEscape($event)',
+    '(keydown.ArrowDown)': 'handleArrow($event, 1)',
+    '(keydown.ArrowUp)': 'handleArrow($event, -1)',
+    '(click)': 'handleClick($event)',
   },
   template: `
     <div *ngIf="isOpen"
@@ -23,32 +45,52 @@ import {
   `,
 })
 export class Dropdown {
+  @ContentChildren(DropdownItem) children: QueryList<DropdownItem>;
   @Output() open: EventEmitter<any> = new EventEmitter();
   @Output() close: EventEmitter<any> = new EventEmitter();
   public isOpen: boolean = false;
-  public isMobileOpen: boolean = false;
+  private focusIndex: number = -1;
 
-  constructor( @Attribute('class') cl: string) {
+  constructor() {
     this.open.subscribe(() => {
       this.isOpen = true;
     });
     this.close.subscribe(() => {
       this.isOpen = false;
     });
-
-    let open = cl.includes('open');
-    if (open) {
-      this.open.emit(undefined);
-    }
   }
-  backdropClick(event: Event) {
+  backdropClick(event: any) {
     if (this.isOpen) {
       this.close.emit(undefined);
       event.stopPropagation();
     }
   }
-  ontouchend() {
-    this.isMobileOpen = true;
+  handleClick(event: any) {
+    // not disabled link
+    if (event.target.classList.contains('disabled')) return;
+    // not text area
+    if (/input|textarea/i.test(event.target.tagName)) return;
+    this.close.emit(undefined);
+  }
+  handleEscape(event: any) {
+    if (this.isOpen) {
+      this.close.emit(undefined);
+    }
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  handleArrow(event: any, move: number) {
+    this.focusIndex += move;
+    let items = this.children.toArray();
+    if (!items.length) {
+      return;
+    }
+    // restrain to available elements
+    if (this.focusIndex > items.length - 1) this.focusIndex = items.length - 1;
+    if (this.focusIndex < 0) this.focusIndex = 0;
+    items[this.focusIndex].focus()
+    // items.forEach((item) => item.el.nativeElement.focus())
+    // this.menu.children.last.el.nativeElement.focus()
   }
 }
 
@@ -62,20 +104,10 @@ export class Dropdown {
   },
 })
 export class DropdownToggle {
-  disabled: boolean;
-  classes: string;
-
-  constructor(
-    @Host() private dropdown: Dropdown,
-    @Attribute('class') cl: string
-  ) {
-    this.disabled = cl.includes('disabled');
-  }
-
-  setMousedown(e: Event) {
-    // e.stopPropagation();
+  constructor(@Host() private dropdown: Dropdown) {}
+  setMousedown(e: any) {
     // ignore disabled clicks
-    if (this.disabled) { return; };
+    if (e.target.classList.contains('disabled')) return;
     if (this.dropdown.isOpen) {
       this.dropdown.close.emit(undefined);
     } else {
@@ -83,32 +115,14 @@ export class DropdownToggle {
     }
     event.stopPropagation();
   }
-
   @HostBinding('attr.aria-expanded')
   get isAriaExpanded(): string {
     return this.dropdown.isOpen ? 'true' : 'false';
   }
 }
 
-@Directive({
-  selector: '.dropdown-menu',
-  host: {
-    '(click)': 'setMousedown($event)',
-  },
-})
-export class DropdownMenu {
-  disabled: boolean;
-  classes: string;
-
-  constructor(@Host() private dropdown: Dropdown) {}
-
-  setMousedown(e: Event) {
-    if (this.dropdown.isOpen) {
-      this.dropdown.close.emit(undefined);
-    } else {
-      this.dropdown.open.emit(undefined);
-    }
-  }
-}
-
-export const DROPDOWN_DIRECTIVES: Array<any> = [Dropdown, DropdownToggle, DropdownMenu];
+export const DROPDOWN_DIRECTIVES: Array<any> = [
+  Dropdown,
+  DropdownToggle,
+  DropdownItem,
+];

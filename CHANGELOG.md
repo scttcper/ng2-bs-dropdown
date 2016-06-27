@@ -1,4 +1,12 @@
-<a name="0.5.0"></a>
+<a name="0.6.0"></a>
+# 0.6.0 (2016-06-27)
+Add ability to navigate using arrow keys
+Add a DropdownItem directive to access elements
+Remove DropdownMenu and handle clicks from the dropdown directive
+
+
+
+<a name="0.5.1"></a>
 # 0.5.1 (2016-06-09)
 Remove document click listener and show dropdown-backdrop for all.
 Add DropdownMenu component that will close menu on click.

@@ -78,7 +78,6 @@ const availableStates = [
         <input #searchInput
                [(ngModel)]="searchQuery"
                (ngModelChange)="search()"
-               (click)="$event.stopPropagation()"
                (keyup.enter)="useSearch()"
                type="text"
                class="form-control">

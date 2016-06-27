@@ -4,10 +4,11 @@
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <h6 class="dropdown-header">Dropdown Header</h6>
-    <a class="dropdown-item" (mousedown)="doSomething()">Mousedown</a>
-    <a class="dropdown-item" (click)="doSomething()">Click</a>
-    <a class="dropdown-item" (mouseup)="doSomething()">Mouseup</a>
-  </div>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <!-- <h6 class="dropdown-header">Dropdown Header</h6> -->
+    <li role="menuitem"><a class="dropdown-item disabled" href="#">Disabled</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#" (mousedown)="doSomething()">Mousedown</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#" (click)="doSomething()">Click</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#" (mouseup)="doSomething()">Mouseup</a></li>
+  </ul>
 </div>

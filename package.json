@@ -13,7 +13,8 @@
     "start": "npm run demo-app",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "typings": "typings install --ambient",
-    "postinstall": "npm run typings"
+    "postinstall": "npm run typings",
+    "ng": "ng"
   },
   "version": "0.1.3",
   "license": "MIT",
