@@ -73,6 +73,7 @@ export class Dropdown {
     this.close.emit(undefined);
   }
   handleEscape(event: any) {
+    if (/input|textarea/i.test(event.target.tagName)) return;
     if (this.isOpen) {
       this.close.emit(undefined);
     }
@@ -80,6 +81,7 @@ export class Dropdown {
     event.stopPropagation();
   }
   handleArrow(event: any, move: number) {
+    if (/input|textarea/i.test(event.target.tagName)) return;
     this.focusIndex += move;
     let items = this.children.toArray();
     if (!items.length) {
@@ -88,9 +90,9 @@ export class Dropdown {
     // restrain to available elements
     if (this.focusIndex > items.length - 1) this.focusIndex = items.length - 1;
     if (this.focusIndex < 0) this.focusIndex = 0;
-    items[this.focusIndex].focus()
-    // items.forEach((item) => item.el.nativeElement.focus())
-    // this.menu.children.last.el.nativeElement.focus()
+    items[this.focusIndex].focus();
+    event.stopPropagation();
+    event.preventDefault();
   }
 }
 
