@@ -1,26 +1,26 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, QueryList, ElementRef, Renderer } from '@angular/core';
+export declare class DropdownItem {
+    private el;
+    private renderer;
+    constructor(el: ElementRef, renderer: Renderer);
+    focus(): void;
+}
 export declare class Dropdown {
+    children: QueryList<DropdownItem>;
     open: EventEmitter<any>;
     close: EventEmitter<any>;
     isOpen: boolean;
-    isMobileOpen: boolean;
-    constructor(cl: string);
-    backdropClick(event: Event): void;
-    ontouchend(): void;
+    private focusIndex;
+    constructor();
+    backdropClick(event: any): void;
+    handleClick(event: any): void;
+    handleEscape(event: any): void;
+    handleArrow(event: any, move: number): void;
 }
 export declare class DropdownToggle {
     private dropdown;
-    disabled: boolean;
-    classes: string;
-    constructor(dropdown: Dropdown, cl: string);
-    setMousedown(e: Event): void;
-    isAriaExpanded: string;
-}
-export declare class DropdownMenu {
-    private dropdown;
-    disabled: boolean;
-    classes: string;
     constructor(dropdown: Dropdown);
-    setMousedown(e: Event): void;
+    setMousedown(e: any): void;
+    isAriaExpanded: string;
 }
 export declare const DROPDOWN_DIRECTIVES: Array<any>;

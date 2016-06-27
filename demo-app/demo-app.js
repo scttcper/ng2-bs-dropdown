@@ -22,7 +22,7 @@ var DemoApp = (function () {
             styleUrls: ['demo-app/demo-app.css'],
             directives: [dropdown_demo_1.DropdownDemo, dropdown_input_1.DropdownInput],
             encapsulation: core_1.ViewEncapsulation.None,
-            pipes: []
+            pipes: [],
         }), 
         __metadata('design:paramtypes', [])
     ], DemoApp);
