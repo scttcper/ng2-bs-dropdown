@@ -115,7 +115,7 @@ export class DropdownToggle {
     } else {
       this.dropdown.open.emit(undefined);
     }
-    event.stopPropagation();
+    e.stopPropagation();
   }
   @HostBinding('attr.aria-expanded')
   get isAriaExpanded(): string {
