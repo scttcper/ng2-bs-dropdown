@@ -128,7 +128,7 @@ var DropdownToggle = (function () {
         else {
             this.dropdown.open.emit(undefined);
         }
-        event.stopPropagation();
+        e.stopPropagation();
     };
     Object.defineProperty(DropdownToggle.prototype, "isAriaExpanded", {
         get: function () {
