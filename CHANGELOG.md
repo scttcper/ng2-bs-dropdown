@@ -1,3 +1,10 @@
+<a name="0.6.2"></a>
+# 0.6.2 (2016-07-04)
+Fix misspelled param error
+Bump angular peerDependencies
+
+
+
 <a name="0.6.0"></a>
 # 0.6.0 (2016-06-27)
 Add ability to navigate using arrow keys
