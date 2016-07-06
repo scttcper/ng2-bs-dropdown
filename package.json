@@ -8,7 +8,7 @@
     "url": "https://github.com/scttcper/ng2-bs-dropdown.git"
   },
   "scripts": {
-    "build": "ng build",
+    "build": "ng build --prod",
     "demo-app": "ng serve",
     "start": "npm run demo-app",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
@@ -37,7 +37,8 @@
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
-    "angular-cli": "0.0.37",
+    "angular-cli": "1.0.0-beta.9",
+    "ember-cli-inject-live-reload": "^1.4.0",
     "broccoli-autoprefixer": "^4.1.0",
     "broccoli-funnel": "^1.0.2",
     "broccoli-merge-trees": "^1.1.1",
