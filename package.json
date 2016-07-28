@@ -27,28 +27,28 @@
     "@angular/core": "2.0.0-rc.4",
     "@angular/platform-browser": "2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap": "^4.0.0-alpha.3",
     "es6-promise": "^3.2.1",
     "es6-shim": "^0.35.1",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.31",
+    "systemjs": "0.19.35",
     "zone.js": "0.6.12"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
-    "angular-cli": "1.0.0-beta.9",
-    "ember-cli-inject-live-reload": "^1.4.0",
+    "angular-cli": "1.0.0-beta.10",
+    "ember-cli-inject-live-reload": "^1.4.1",
     "broccoli-autoprefixer": "^4.1.0",
-    "broccoli-funnel": "^1.0.2",
-    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-funnel": "^1.0.3",
+    "broccoli-merge-trees": "^1.1.2",
     "conventional-changelog": "^1.1.0",
     "gh-pages": "^0.11.0",
     "node-sass": "^3.8.0",
     "sass": "^0.5.0",
-    "ts-node": "^0.9.3",
-    "tslint": "^3.13.0",
+    "ts-node": "^1.2.1",
+    "tslint": "^3.14.0",
     "typescript": "^1.8.10",
-    "typings": "^1.3.1"
+    "typings": "^1.3.2"
   }
 }
