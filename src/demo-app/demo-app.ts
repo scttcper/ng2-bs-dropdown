@@ -1,4 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DropdownDemo } from './dropdown/dropdown-demo';
+import { DropdownInput } from './dropdown-input/dropdown-input';
+import { BsDropdownModule } from '../components/dropdown/dropdown';
 
 
 @Component({
@@ -9,4 +14,25 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class DemoApp {
   constructor() { }
+}
+
+
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    BsDropdownModule
+  ],
+  declarations: [
+    // Components / Directives/ Pipes
+    DropdownInput,
+    DropdownDemo,
+  ],
+  exports: [
+    DropdownInput,
+    DropdownDemo
+  ]
+})
+export class DemoModule {
 }
