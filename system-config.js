@@ -1,40 +1,40 @@
-/***********************************************************************************************
- * User Configuration.
- **********************************************************************************************/
+// User Configuration
+var components = [
+    'toastr',
+];
 /** Map relative paths to URLs. */
 var map = {};
 /** User packages configuration. */
 var packages = {
-    'demo-app': {
-        format: 'cjs',
+    // Set the default extension for the root package, because otherwise the demo-app can't
+    // be built within the production mode. Due to missing file extensions.
+    '.': {
         defaultExtension: 'js'
-    },
-    'components': {
-        format: 'cjs',
-        defaultExtension: 'js'
-    },
-    'core': {
-        format: 'cjs',
-        defaultExtension: 'js'
-    },
+    }
 };
-////////////////////////////////////////////////////////////////////////////////////////////////
-/***********************************************************************************************
- * Everything underneath this line is managed by the CLI.
- **********************************************************************************************/
+// Everything underneath this line is managed by the CLI
 var barrels = [
     // Angular specific barrels.
     '@angular/core',
     '@angular/common',
     '@angular/compiler',
+    // '@angular/http',
+    '@angular/forms',
+    // '@angular/router',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
+    // '@angular2-material/core',
+    '@types/core-js',
     // Thirdparty barrels.
     'rxjs',
     // App specific barrels.
-    'app',
-    'app/shared',
-];
+    'demo-app',
+    'button-toggle',
+    'gestures',
+    'live-announcer',
+    'portal',
+    'overlay'
+].concat(components);
 var _cliSystemConfig = {};
 barrels.forEach(function (barrelName) {
     _cliSystemConfig[barrelName] = { main: 'index' };
@@ -43,11 +43,18 @@ barrels.forEach(function (barrelName) {
 System.config({
     map: {
         '@angular': 'vendor/@angular',
+        '@angular2-material': 'vendor/@angular2-material',
         'rxjs': 'vendor/rxjs',
         'main': 'main.js'
     },
     packages: _cliSystemConfig
 });
+var materialPkgs = [
+    'core',
+];
+materialPkgs.forEach(function (pkg) {
+    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
+});
 // Apply the user's configuration.
 System.config({ map: map, packages: packages });
-//# sourceMappingURL=../system-config.js.map
+//# sourceMappingURL=system-config.js.map

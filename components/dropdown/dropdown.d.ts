@@ -24,3 +24,5 @@ export declare class DropdownToggle {
     isAriaExpanded: string;
 }
 export declare const DROPDOWN_DIRECTIVES: Array<any>;
+export declare class BsDropdownModule {
+}
