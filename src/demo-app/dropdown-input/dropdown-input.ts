@@ -1,12 +1,10 @@
 import {
   Component,
   ViewChild,
-  Input,
   Renderer,
   ElementRef,
 } from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
-import {DROPDOWN_DIRECTIVES, Dropdown} from '../../components/dropdown/dropdown';
+import { Dropdown } from '../../components/dropdown/dropdown';
 
 const availableStates = [
   'Alabama',
@@ -64,10 +62,6 @@ const availableStates = [
 
 @Component({
   selector: 'dropdown-input',
-  directives: [
-    DROPDOWN_DIRECTIVES,
-    FORM_DIRECTIVES,
-  ],
   template: `
   <div #dropdown (open)="openDropdown()" class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button">

@@ -1,16 +1,17 @@
 import {
+  NgModule,
   Directive,
   Component,
   HostBinding,
   EventEmitter,
   Host,
-  Attribute,
   Output,
   ContentChildren,
   QueryList,
   ElementRef,
   Renderer,
 } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Directive({
   selector: '.dropdown-item:not(.disabled)',
@@ -128,3 +129,10 @@ export const DROPDOWN_DIRECTIVES: Array<any> = [
   DropdownToggle,
   DropdownItem,
 ];
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: DROPDOWN_DIRECTIVES,
+  exports: DROPDOWN_DIRECTIVES,
+})
+export class BsDropdownModule { }

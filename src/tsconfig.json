@@ -3,11 +3,11 @@
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "mapRoot": "",
+    "mapRoot": "/",
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "../../dist/",
     "rootDir": "..",
     "sourceMap": true,
@@ -16,8 +16,15 @@
     "stripInternal": true,
     "baseUrl": ""
   },
+  "angularCompilerOptions": {
+    "genDir": "../../dist",
+    "debug": true
+  },
   "files": [
     "main.ts",
     "typings.d.ts"
-  ]
+  ],
+  "atom": { "rewriteTsconfig": false },
+  "compileOnSave": false,
+  "buildOnSave": false
 }
