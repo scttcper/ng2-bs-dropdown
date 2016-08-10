@@ -1,5 +1,5 @@
 var components = [
-    'toastr',
+    'dropdown',
 ];
 var map = {};
 var packages = {
@@ -11,17 +11,13 @@ var barrels = [
     '@angular/core',
     '@angular/common',
     '@angular/compiler',
+    '@angular/http',
     '@angular/forms',
+    '@angular/router',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
-    '@types/core-js',
     'rxjs',
-    'demo-app',
-    'button-toggle',
-    'gestures',
-    'live-announcer',
-    'portal',
-    'overlay'
+    'demo-app'
 ].concat(components);
 var _cliSystemConfig = {};
 barrels.forEach(function (barrelName) {
@@ -30,16 +26,9 @@ barrels.forEach(function (barrelName) {
 System.config({
     map: {
         '@angular': 'vendor/@angular',
-        '@angular2-material': 'vendor/@angular2-material',
         'rxjs': 'vendor/rxjs',
         'main': 'main.js'
     },
     packages: _cliSystemConfig
-});
-var materialPkgs = [
-    'core',
-];
-materialPkgs.forEach(function (pkg) {
-    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
 });
 System.config({ map: map, packages: packages });

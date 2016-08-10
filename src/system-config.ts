@@ -1,6 +1,6 @@
 // User Configuration
 const components = [
-  'toastr',
+  'dropdown',
 ];
 
 /** Map relative paths to URLs. */
@@ -24,24 +24,17 @@ const barrels: string[] = [
   '@angular/core',
   '@angular/common',
   '@angular/compiler',
-  // '@angular/http',
+  '@angular/http',
   '@angular/forms',
-  // '@angular/router',
+  '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-  // '@angular2-material/core',
-  '@types/core-js',
 
   // Thirdparty barrels.
   'rxjs',
 
   // App specific barrels.
   'demo-app',
-  'button-toggle',
-  'gestures',
-  'live-announcer',
-  'portal',
-  'overlay',
   ...components
   /** @cli-barrel */
 ];
@@ -58,19 +51,10 @@ declare var System: any;
 System.config({
   map: {
     '@angular': 'vendor/@angular',
-    '@angular2-material': 'vendor/@angular2-material',
     'rxjs': 'vendor/rxjs',
     'main': 'main.js'
   },
   packages: _cliSystemConfig
-});
-
-const materialPkgs: string[] = [
-  'core',
-];
-
-materialPkgs.forEach((pkg) => {
-  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
 });
 
 // Apply the user's configuration.

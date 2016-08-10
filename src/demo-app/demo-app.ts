@@ -31,8 +31,7 @@ export class DemoApp {
   ],
   exports: [
     DropdownInput,
-    DropdownDemo
+    DropdownDemo,
   ]
 })
-export class DemoModule {
-}
+export class DemoModule {}

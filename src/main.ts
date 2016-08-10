@@ -9,12 +9,8 @@ import { DemoModule, DemoApp } from './demo-app/demo-app';
 import { BsDropdownModule } from './components/dropdown/dropdown';
 
 @NgModule({
-  bootstrap: [
-    DemoApp
-  ],
-  declarations: [
-    DemoApp
-  ],
+  bootstrap: [DemoApp],
+  declarations: [DemoApp],
   imports: [
     CommonModule,
     FormsModule,
