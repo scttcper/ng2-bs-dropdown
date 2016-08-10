@@ -1,6 +1,6 @@
 // User Configuration
 var components = [
-    'toastr',
+    'dropdown',
 ];
 /** Map relative paths to URLs. */
 var map = {};
@@ -18,22 +18,15 @@ var barrels = [
     '@angular/core',
     '@angular/common',
     '@angular/compiler',
-    // '@angular/http',
+    '@angular/http',
     '@angular/forms',
-    // '@angular/router',
+    '@angular/router',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
-    // '@angular2-material/core',
-    '@types/core-js',
     // Thirdparty barrels.
     'rxjs',
     // App specific barrels.
-    'demo-app',
-    'button-toggle',
-    'gestures',
-    'live-announcer',
-    'portal',
-    'overlay'
+    'demo-app'
 ].concat(components);
 var _cliSystemConfig = {};
 barrels.forEach(function (barrelName) {
@@ -43,17 +36,10 @@ barrels.forEach(function (barrelName) {
 System.config({
     map: {
         '@angular': 'vendor/@angular',
-        '@angular2-material': 'vendor/@angular2-material',
         'rxjs': 'vendor/rxjs',
         'main': 'main.js'
     },
     packages: _cliSystemConfig
-});
-var materialPkgs = [
-    'core',
-];
-materialPkgs.forEach(function (pkg) {
-    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
 });
 // Apply the user's configuration.
 System.config({ map: map, packages: packages });
