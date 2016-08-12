@@ -1,17 +1,17 @@
-# Angular 2 Bootstrap Dropdown 
+# Angular 2 Bootstrap Dropdown
 
 __Install:__  
 ```npm install ng2-bs-dropdown --save```  
 __Use:__  
 component.js
-```typescript 
-import {DROPDOWN_DIRECTIVES} from 'ng2-bs-dropdown';
-@Component({
-  selector: 'example',
-  directives: [DROPDOWN_DIRECTIVES],
-  templateUrl: 'has-dropdown.html'
+```typescript
+import { BsDropdownModule } from 'ng2-bs-dropdown';
+@NgModule({
+  imports: [
+    BsDropdownModule,
+  ],
 })
-export class DropdownDemo { }
+class YourModule {}
 ```  
 has-dropdown.html
 ```html
