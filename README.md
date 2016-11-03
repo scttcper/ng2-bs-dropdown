@@ -1,4 +1,6 @@
-# Angular 2 Bootstrap Dropdown
+# DEPRECATED: use ng-bootstrap
+=========================
+### Angular 2 Bootstrap Dropdown
 
 __Install:__  
 ```npm install ng2-bs-dropdown --save```  
