@@ -1,5 +1,5 @@
 # DEPRECATED: use ng-bootstrap
-=========================
+
 ### Angular 2 Bootstrap Dropdown
 
 __Install:__  
