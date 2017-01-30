@@ -1,5 +1,7 @@
 # DEPRECATED: use ng-bootstrap
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/scttcper/ng2-bs-dropdown.svg)](https://greenkeeper.io/)
+
 ### Angular 2 Bootstrap Dropdown
 
 __Install:__  
